@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
-import Button from '../components/ui/Button';
+import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail } from 'lucide-react';
 
 const Contact: React.FC = () => {
@@ -266,7 +266,10 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="text-center">
-                <Button type="submit" variant="primary" className="px-8">
+                <Button 
+                  type="submit" 
+                  className="bg-hosting-orange hover:bg-hosting-orange/90 text-white px-8"
+                >
                   Send Message
                 </Button>
               </div>

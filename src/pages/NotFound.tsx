@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Layout from "../components/layout/Layout";
-import Button from "../components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 const NotFound: React.FC = () => {
   const location = useLocation();
@@ -26,8 +26,8 @@ const NotFound: React.FC = () => {
             We're sorry, but the page you're looking for doesn't exist or has been moved.
           </p>
           <div className="animate-fade-up animate-delay-300">
-            <Button href="/" size="lg">
-              Return to Home
+            <Button asChild size="lg" className="bg-hosting-orange hover:bg-hosting-orange/90 text-white">
+              <Link to="/">Return to Home</Link>
             </Button>
           </div>
         </div>

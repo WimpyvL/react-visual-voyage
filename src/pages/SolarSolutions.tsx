@@ -1,7 +1,8 @@
+
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import Button from '../components/ui/Button';
+import { Button } from "@/components/ui/button";
 import { Sun, Battery, Zap, BarChart3, Home, Building, Wrench } from 'lucide-react';
 
 const SolarSolutions: React.FC = () => {
@@ -137,10 +138,10 @@ const SolarSolutions: React.FC = () => {
               Take control of your energy future with our solar solutions.
             </p>
             <Button 
-              href="/contact" 
-              variant="primary" 
+              asChild
+              className="bg-hosting-orange hover:bg-hosting-orange/90 text-white"
             >
-              Get Started
+              <a href="/contact">Get Started</a>
             </Button>
           </div>
         </div>
