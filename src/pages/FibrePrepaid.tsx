@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import { Button } from '@/components/ui/button';
+import Button from '../components/ui/Button';
 import { CreditCard, Zap, Sliders, Clock, AlertTriangle } from 'lucide-react';
 
 const FibrePrepaid: React.FC = () => {
@@ -122,10 +122,10 @@ const FibrePrepaid: React.FC = () => {
               Experience the freedom of prepaid fibre internet today.
             </p>
             <Button 
-              asChild
-              variant="default" 
+              href="/contact" 
+              variant="primary" 
             >
-              <a href="/contact">Check Coverage</a>
+              Check Coverage
             </Button>
           </div>
         </div>

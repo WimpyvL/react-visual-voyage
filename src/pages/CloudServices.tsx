@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import { Button } from '@/components/ui/button';
+import Button from '../components/ui/Button';
 import { HardDrive, RefreshCw, Shield, Server, DollarSign, Scale, LockKeyhole, CheckCircle2 } from 'lucide-react';
 
 const CloudServices: React.FC = () => {
@@ -117,11 +117,11 @@ const CloudServices: React.FC = () => {
             </h2>
             <div className="mt-8">
               <Button 
-                asChild
+                href="/contact" 
                 variant="outline" 
                 className="border-white text-white hover:bg-white hover:text-hosting-orange"
               >
-                <a href="/contact">Contact Us Today</a>
+                Contact Us Today
               </Button>
             </div>
           </div>

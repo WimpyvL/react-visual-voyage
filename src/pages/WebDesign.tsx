@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import { Button } from '@/components/ui/button';
+import Button from '../components/ui/Button';
 import { Monitor, Smartphone, ShoppingCart, Search, Palette, BarChart } from 'lucide-react';
 
 const WebDesign: React.FC = () => {
@@ -144,10 +144,10 @@ const WebDesign: React.FC = () => {
               Contact us today for a free consultation and quote
             </p>
             <Button 
-              asChild
-              variant="default"
+              href="/contact" 
+              variant="primary" 
             >
-              <a href="/contact">Get Started</a>
+              Get Started
             </Button>
           </div>
         </div>
