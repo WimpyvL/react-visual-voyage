@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Button from '../ui/Button';
+import { Button } from "@/components/ui/button";
 
 const CallToAction: React.FC = () => {
   return (
@@ -12,11 +12,11 @@ const CallToAction: React.FC = () => {
           </h2>
           <div className="mt-8">
             <Button 
-              href="/contact" 
+              asChild
               variant="outline" 
               className="border-white text-white hover:bg-white hover:text-hosting-orange"
             >
-              Contact Us
+              <a href="/contact">Contact Us</a>
             </Button>
           </div>
         </div>
