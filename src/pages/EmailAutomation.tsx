@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import Button from '../components/ui/Button';
+import { Button } from "@/components/ui/button";
 import { Mail, MessageSquare, Send, Cog, Code, FileText, Bell, Mic } from 'lucide-react';
 
 const EmailAutomation: React.FC = () => {
@@ -102,10 +102,10 @@ const EmailAutomation: React.FC = () => {
               Contact us today to discuss your email and automation needs.
             </p>
             <Button 
-              href="/contact" 
-              variant="primary" 
+              asChild
+              className="bg-hosting-orange text-white hover:bg-opacity-90"
             >
-              Get Started
+              <a href="/contact">Get Started</a>
             </Button>
           </div>
         </div>
