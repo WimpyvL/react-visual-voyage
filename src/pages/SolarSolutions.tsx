@@ -1,8 +1,9 @@
+
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
 import { Button } from '@/components/ui/button';
-import { Sun, Home, Building2, Battery, Zap, BarChart3, Clock, DollarSign } from 'lucide-react';
+import { Sun, Home, Building2, Battery, Zap, BarChart3, Clock, DollarSign, Wrench } from 'lucide-react';
 
 const SolarSolutions: React.FC = () => {
   const services = [
