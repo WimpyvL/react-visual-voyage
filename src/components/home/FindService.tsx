@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Button from '../ui/Button';
+import { Button } from "@/components/ui/button";
 
 const FindService: React.FC = () => {
   return (
@@ -14,8 +14,8 @@ const FindService: React.FC = () => {
             the best options for your specific requirements.
           </p>
           <div className="animate-fade-up animate-delay-300">
-            <Button>
-              USE OUR SERVICE WIZARD
+            <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90 px-6 py-3 rounded-md font-medium">
+              <a href="/services">USE OUR SERVICE WIZARD</a>
             </Button>
           </div>
         </div>
