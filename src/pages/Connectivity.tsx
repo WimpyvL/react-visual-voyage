@@ -14,7 +14,7 @@ const Connectivity: React.FC = () => {
     },
     {
       title: 'Wireless Solutions',
-      description: 'Reliable wireless connectivity options for areas where fibre isn't available, ensuring you stay connected anywhere.',
+      description: "Reliable wireless connectivity options for areas where fibre isn't available, ensuring you stay connected anywhere.",
       icon: <Radio size={36} />
     },
     {

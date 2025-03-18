@@ -48,7 +48,7 @@ const VpnServices: React.FC = () => {
     {
       step: 2,
       title: 'Setup',
-      description: 'We'll guide you through the setup process.'
+      description: "We'll guide you through the setup process."
     },
     {
       step: 3,

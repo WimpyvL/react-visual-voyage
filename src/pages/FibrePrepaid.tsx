@@ -48,7 +48,7 @@ const FibrePrepaid: React.FC = () => {
     {
       step: 3,
       title: 'Get Connected',
-      description: 'We'll install your fibre connection and provide your router.'
+      description: "We'll install your fibre connection and provide your router."
     },
     {
       step: 4,

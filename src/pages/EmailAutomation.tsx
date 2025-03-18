@@ -44,7 +44,7 @@ const EmailAutomation: React.FC = () => {
     },
     {
       title: 'Voice Broadcasting',
-      description: 'Enables sending recorded voice messages directly to subscribers' phones within minutes.',
+      description: "Enables sending recorded voice messages directly to subscribers' phones within minutes.",
       icon: <Mic size={36} />
     }
   ];
