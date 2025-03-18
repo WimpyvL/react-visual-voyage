@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import Button from '../components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { Wifi, Radio, Network, Clock, CheckCircle2, Sliders, Shield } from 'lucide-react';
 
 const Connectivity: React.FC = () => {
@@ -125,10 +125,10 @@ const Connectivity: React.FC = () => {
               Contact us today to discuss your connectivity needs and find the perfect solution for your business.
             </p>
             <Button 
-              href="/contact" 
-              variant="primary" 
+              asChild
+              variant="default" 
             >
-              Get Started
+              <a href="/contact">Get Started</a>
             </Button>
           </div>
         </div>
