@@ -1,9 +1,8 @@
-
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
 import Button from '../components/ui/Button';
-import { Sun, Battery, Zap, BarChart3, Home, Building, Tool } from 'lucide-react';
+import { Sun, Battery, Zap, BarChart3, Home, Building, Wrench } from 'lucide-react';
 
 const SolarSolutions: React.FC = () => {
   const services = [
@@ -58,7 +57,7 @@ const SolarSolutions: React.FC = () => {
         'Performance Monitoring',
         'Emergency Support'
       ],
-      icon: <Tool size={36} />
+      icon: <Wrench size={36} />
     }
   ];
 
