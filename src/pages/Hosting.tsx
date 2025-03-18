@@ -91,7 +91,7 @@ const Hosting: React.FC = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-hosting-dark-gray pt-32 pb-16 text-white text-center">
+      <section className="relative bg-hosting-dark-gray pt-16 pb-16 text-white text-center">
         <div className="container-custom">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-up">Professional Web Hosting Solutions</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-up animate-delay-100">
