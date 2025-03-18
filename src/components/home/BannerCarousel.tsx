@@ -42,9 +42,9 @@ const BannerCarousel: React.FC = () => {
   }, 5000);
 
   return (
-    <section className="w-full bg-black relative h-screen mt-20">
+    <section className="w-full relative h-auto mt-16">
       <Carousel 
-        className="w-full h-full" 
+        className="w-full" 
         opts={{
           startIndex: currentIndex,
           loop: true
@@ -57,21 +57,21 @@ const BannerCarousel: React.FC = () => {
           }
         }}
       >
-        <CarouselContent className="h-full">
+        <CarouselContent>
           {banners.map((banner) => (
-            <CarouselItem key={banner.id} className="w-full h-full">
-              <div className="relative w-full h-full overflow-hidden">
+            <CarouselItem key={banner.id} className="w-full">
+              <div className="relative w-full overflow-hidden">
                 <img 
                   src={banner.image} 
                   alt={`Banner ${banner.id}`} 
-                  className="w-full h-full object-cover object-center"
+                  className="w-full object-cover object-center"
                 />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
           {banners.map((_, index) => (
             <button
               key={index}

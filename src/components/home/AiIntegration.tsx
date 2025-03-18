@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Button from '../ui/Button';
+import { Button } from "@/components/ui/button";
 
 const AiIntegration: React.FC = () => {
   return (
@@ -32,8 +32,8 @@ const AiIntegration: React.FC = () => {
               </li>
             </ul>
             
-            <Button variant="primary">
-              LEARN MORE
+            <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90 px-6 py-3 rounded-md font-medium">
+              <a href="/services">LEARN MORE</a>
             </Button>
           </div>
           
