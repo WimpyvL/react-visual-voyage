@@ -7,7 +7,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { Phone, Globe } from "lucide-react";
 import { useInterval } from '@/hooks/use-interval';
 
@@ -116,7 +116,10 @@ const BannerCarousel: React.FC = () => {
     <section className="w-full bg-black relative">
       <Carousel 
         className="w-full" 
-        selectedIndex={currentIndex}
+        opts={{
+          startIndex: currentIndex,
+          loop: true
+        }}
         setApi={(api) => {
           if (api) {
             api.on('select', () => {
