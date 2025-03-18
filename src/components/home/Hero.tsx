@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import Button from '../ui/Button';
+import { Button } from "@/components/ui/button";
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -44,8 +44,8 @@ const Hero: React.FC = () => {
             Elevate your digital presence with our comprehensive range of web services
           </p>
           <div className="animate-fade-up animate-delay-400">
-            <Button href="/services" size="lg">
-              Explore Our Services
+            <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90 px-6 py-3 rounded-md font-medium">
+              <a href="/services">Explore Our Services</a>
             </Button>
           </div>
         </div>
