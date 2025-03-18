@@ -47,7 +47,13 @@ const BannerCarousel: React.FC = () => {
         className="w-full" 
         opts={{
           startIndex: currentIndex,
-          loop: true
+          loop: true,
+          align: "center",
+          dragFree: false,
+          skipSnaps: false,
+          inViewThreshold: 0.7,
+          // Add smooth transition
+          duration: 30,
         }}
         setApi={(api) => {
           if (api) {
@@ -57,14 +63,14 @@ const BannerCarousel: React.FC = () => {
           }
         }}
       >
-        <CarouselContent>
+        <CarouselContent className="transition-transform duration-700 ease-in-out">
           {banners.map((banner) => (
             <CarouselItem key={banner.id} className="w-full">
               <div className="relative w-full overflow-hidden">
                 <img 
                   src={banner.image} 
                   alt={`Banner ${banner.id}`} 
-                  className="w-full object-cover object-center"
+                  className="w-full object-cover object-center transition-all duration-500"
                 />
               </div>
             </CarouselItem>
@@ -76,7 +82,7 @@ const BannerCarousel: React.FC = () => {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex ? "bg-hosting-orange w-6" : "bg-white/50"
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -84,8 +90,8 @@ const BannerCarousel: React.FC = () => {
           ))}
         </div>
         
-        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/60 transition-colors duration-300" />
+        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/60 transition-colors duration-300" />
       </Carousel>
     </section>
   );
