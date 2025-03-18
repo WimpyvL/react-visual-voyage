@@ -9,11 +9,13 @@ import SecuritySection from '../components/home/SecuritySection';
 import Stats from '../components/home/Stats';
 import Testimonials from '../components/home/Testimonials';
 import CallToAction from '../components/home/CallToAction';
+import BannerCarousel from '../components/home/BannerCarousel';
 
 const Index: React.FC = () => {
   return (
     <Layout>
       <Hero />
+      <BannerCarousel />
       <Services />
       <FindService />
       <AiIntegration />
