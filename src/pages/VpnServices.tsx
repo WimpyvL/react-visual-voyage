@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import Button from '../components/ui/Button';
+import { Button } from "@/components/ui/button";
 import { Zap, MapPin, Shield, Eye, HeadphonesIcon, Globe } from 'lucide-react';
 
 const VpnServices: React.FC = () => {
@@ -101,8 +101,12 @@ const VpnServices: React.FC = () => {
             <p className="text-hosting-medium-gray mb-8">
               Contact us today to learn more about our VPN services.
             </p>
-            <Button variant="primary">
-              Get Started
+            <Button 
+              asChild 
+              variant="default"
+              className="bg-hosting-orange hover:bg-hosting-orange/90 text-white"
+            >
+              <span>Get Started</span>
             </Button>
           </div>
         </div>
@@ -139,10 +143,11 @@ const VpnServices: React.FC = () => {
               Contact us for a free consultation and quote.
             </p>
             <Button 
-              href="/contact" 
-              variant="primary" 
+              asChild
+              variant="default"
+              className="bg-hosting-orange hover:bg-hosting-orange/90 text-white"
             >
-              Contact Us
+              <a href="/contact">Contact Us</a>
             </Button>
           </div>
         </div>
