@@ -113,9 +113,9 @@ const BannerCarousel: React.FC = () => {
   }, 5000);
 
   return (
-    <section className="w-full bg-black relative">
+    <section className="w-full bg-black relative h-screen">
       <Carousel 
-        className="w-full" 
+        className="w-full h-full" 
         opts={{
           startIndex: currentIndex,
           loop: true
@@ -128,14 +128,14 @@ const BannerCarousel: React.FC = () => {
           }
         }}
       >
-        <CarouselContent>
+        <CarouselContent className="h-full">
           {banners.map((banner) => (
-            <CarouselItem key={banner.id} className="w-full">
-              <div className="relative w-full h-[600px] overflow-hidden">
+            <CarouselItem key={banner.id} className="w-full h-full">
+              <div className="relative w-full h-full overflow-hidden">
                 <img 
                   src={banner.image} 
                   alt={banner.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
                 
                 <div className="absolute inset-0 flex items-center">
@@ -156,12 +156,12 @@ const BannerCarousel: React.FC = () => {
                         ))}
                       </ul>
                       
-                      <div className="flex space-x-4 items-center">
+                      <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 items-start sm:items-center">
                         <Button className="bg-hosting-orange hover:bg-hosting-orange/90">
                           {banner.cta}
                         </Button>
                         
-                        <div className="flex items-center space-x-4">
+                        <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
                           <a href="tel:+27827770331" className="flex items-center text-white hover:text-hosting-orange transition-colors">
                             <Phone className="mr-2" size={18} />
                             <span>+27 82 777 0331</span>
@@ -181,7 +181,7 @@ const BannerCarousel: React.FC = () => {
           ))}
         </CarouselContent>
         
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
           {banners.map((_, index) => (
             <button
               key={index}
@@ -194,8 +194,8 @@ const BannerCarousel: React.FC = () => {
           ))}
         </div>
         
-        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
-        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
+        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
       </Carousel>
     </section>
   );

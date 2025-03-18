@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
   return (
     <div 
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden bg-gray-100"
+      className="relative h-screen w-full flex items-center justify-center pt-16 overflow-hidden bg-gray-100"
       style={{
         background: 'linear-gradient(rgba(245, 245, 245, 0.8), rgba(245, 245, 245, 0.8)), url(public/lovable-uploads/96118922-4731-4dcc-a501-91620d979f63.png)',
         backgroundSize: 'cover',
