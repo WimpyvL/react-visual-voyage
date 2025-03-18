@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import Button from '../components/ui/Button';
+import { Button } from "@/components/ui/button";
 import { Layers, Server, HardDrive, Clock } from 'lucide-react';
 
 const Hosting: React.FC = () => {
@@ -98,7 +98,7 @@ const Hosting: React.FC = () => {
             Experience enterprise-grade hosting with unmatched reliability, speed, and support
           </p>
           <div className="mt-8 animate-fade-up animate-delay-200">
-            <Button variant="primary">
+            <Button className="bg-hosting-orange text-white hover:bg-opacity-90">
               Start Your Journey
             </Button>
           </div>
@@ -138,7 +138,7 @@ const Hosting: React.FC = () => {
               the best options for your specific requirements.
             </p>
             <div className="animate-fade-up animate-delay-300">
-              <Button>
+              <Button className="bg-hosting-orange text-white hover:bg-opacity-90">
                 USE OUR SERVICE WIZARD
               </Button>
             </div>
@@ -202,7 +202,9 @@ const Hosting: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.popular ? 'primary' : 'outline'} className="w-full">
+                <Button 
+                  className={plan.popular ? "bg-hosting-orange text-white hover:bg-opacity-90" : "border border-hosting-orange text-hosting-orange hover:bg-hosting-orange/10"} 
+                >
                   Get Started
                 </Button>
               </div>
@@ -222,10 +224,10 @@ const Hosting: React.FC = () => {
               Join thousands of satisfied customers who trust us with their hosting needs.
             </p>
             <Button 
-              href="/contact" 
-              variant="primary" 
+              asChild 
+              className="bg-hosting-orange text-white hover:bg-opacity-90"
             >
-              Contact Us Today
+              <a href="/contact">Contact Us Today</a>
             </Button>
           </div>
         </div>
