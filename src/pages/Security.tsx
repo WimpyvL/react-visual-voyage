@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import Button from '../components/ui/Button';
+import { Button } from "@/components/ui/button";
 import { Shield, Database, Lock, AlertTriangle, Monitor, Cloud, Network } from 'lucide-react';
 
 const Security: React.FC = () => {
@@ -138,10 +138,11 @@ const Security: React.FC = () => {
               Don't wait until it's too late. Secure your digital assets now.
             </p>
             <Button 
-              href="/contact" 
-              variant="primary" 
+              asChild
+              variant="default"
+              className="bg-hosting-orange hover:bg-hosting-orange/90 text-white"
             >
-              Get Started
+              <a href="/contact">Get Started</a>
             </Button>
           </div>
         </div>
