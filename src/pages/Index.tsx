@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Layout from '../components/layout/Layout';
+import BannerCarousel from '../components/home/BannerCarousel';
 import Hero from '../components/home/Hero';
 import Services from '../components/home/Services';
 import FindService from '../components/home/FindService';
@@ -9,13 +10,12 @@ import SecuritySection from '../components/home/SecuritySection';
 import Stats from '../components/home/Stats';
 import Testimonials from '../components/home/Testimonials';
 import CallToAction from '../components/home/CallToAction';
-import BannerCarousel from '../components/home/BannerCarousel';
 
 const Index: React.FC = () => {
   return (
     <Layout>
-      <Hero />
       <BannerCarousel />
+      <Hero />
       <Services />
       <FindService />
       <AiIntegration />

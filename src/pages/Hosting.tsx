@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import { Button } from '@/components/ui/button';
+import Button from '../components/ui/Button';
 import { Layers, Server, HardDrive, Clock } from 'lucide-react';
 
 const Hosting: React.FC = () => {
@@ -91,15 +91,15 @@ const Hosting: React.FC = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-hosting-dark-gray pt-16 pb-16 text-white text-center">
+      <section className="relative bg-hosting-dark-gray pt-32 pb-16 text-white text-center">
         <div className="container-custom">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-up">Professional Web Hosting Solutions</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-up animate-delay-100">
             Experience enterprise-grade hosting with unmatched reliability, speed, and support
           </p>
           <div className="mt-8 animate-fade-up animate-delay-200">
-            <Button asChild variant="default">
-              <a href="/contact">Start Your Journey</a>
+            <Button variant="primary">
+              Start Your Journey
             </Button>
           </div>
         </div>
@@ -138,8 +138,8 @@ const Hosting: React.FC = () => {
               the best options for your specific requirements.
             </p>
             <div className="animate-fade-up animate-delay-300">
-              <Button asChild variant="default">
-                <a href="/service-wizard">USE OUR SERVICE WIZARD</a>
+              <Button>
+                USE OUR SERVICE WIZARD
               </Button>
             </div>
           </div>
@@ -202,8 +202,8 @@ const Hosting: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <Button asChild variant="default" className={plan.popular ? 'bg-hosting-orange hover:bg-opacity-90' : ''}>
-                  <a href="/contact">Get Started</a>
+                <Button variant={plan.popular ? 'primary' : 'outline'} className="w-full">
+                  Get Started
                 </Button>
               </div>
             ))}
@@ -221,8 +221,11 @@ const Hosting: React.FC = () => {
             <p className="text-gray-300 mb-8">
               Join thousands of satisfied customers who trust us with their hosting needs.
             </p>
-            <Button asChild variant="default">
-              <a href="/contact">Contact Us Today</a>
+            <Button 
+              href="/contact" 
+              variant="primary" 
+            >
+              Contact Us Today
             </Button>
           </div>
         </div>

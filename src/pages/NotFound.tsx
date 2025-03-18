@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Layout from "../components/layout/Layout";
-import { Button } from "@/components/ui/button";
+import Button from "../components/ui/Button";
 
 const NotFound: React.FC = () => {
   const location = useLocation();
@@ -15,7 +15,7 @@ const NotFound: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <Layout hideHeader>
+    <Layout>
       <div className="min-h-[80vh] flex items-center justify-center">
         <div className="text-center max-w-xl px-4">
           <h1 className="text-7xl font-bold text-hosting-orange mb-6 animate-fade-up">404</h1>
@@ -26,8 +26,8 @@ const NotFound: React.FC = () => {
             We're sorry, but the page you're looking for doesn't exist or has been moved.
           </p>
           <div className="animate-fade-up animate-delay-300">
-            <Button asChild variant="default" size="lg">
-              <Link to="/">Return to Home</Link>
+            <Button href="/" size="lg">
+              Return to Home
             </Button>
           </div>
         </div>

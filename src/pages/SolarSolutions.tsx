@@ -1,9 +1,8 @@
-
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
-import { Button } from '@/components/ui/button';
-import { Sun, Home, Building2, Battery, Zap, BarChart3, Clock, DollarSign, Wrench } from 'lucide-react';
+import Button from '../components/ui/Button';
+import { Sun, Battery, Zap, BarChart3, Home, Building, Wrench } from 'lucide-react';
 
 const SolarSolutions: React.FC = () => {
   const services = [
@@ -48,7 +47,7 @@ const SolarSolutions: React.FC = () => {
         'Power Management',
         'Energy Storage'
       ],
-      icon: <Building2 size={36} />
+      icon: <Building size={36} />
     },
     {
       title: 'Maintenance',
@@ -127,18 +126,21 @@ const SolarSolutions: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="py-16 bg-hosting-dark-gray text-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Harness the Power of the Sun?
+              Ready to Go Solar?
             </h2>
             <p className="text-gray-300 mb-8">
-              Contact us today to discuss your solar energy needs and start your journey towards energy independence.
+              Take control of your energy future with our solar solutions.
             </p>
-            <Button asChild variant="default">
-              <a href="/contact">Contact Us Today</a>
+            <Button 
+              href="/contact" 
+              variant="primary" 
+            >
+              Get Started
             </Button>
           </div>
         </div>

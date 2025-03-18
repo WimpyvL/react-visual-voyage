@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
-import { Button } from '@/components/ui/button';
+import Button from '../components/ui/Button';
 import { MapPin, Phone, Mail } from 'lucide-react';
 
 const Contact: React.FC = () => {
@@ -38,10 +39,33 @@ const Contact: React.FC = () => {
     });
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic would go here
+    console.log('Form submitted:', formData);
+    // Reset form after submission
+    setFormData({
+      name: '',
+      email: '',
+      contactNumber: '',
+      services: {
+        webDevelopment: false,
+        appDevelopment: false,
+        fibreLte: false,
+        securitySolutions: false,
+        solarSolutions: false,
+        aiIntegration: false,
+      },
+      message: '',
+    });
+    // Show success message or redirect
+    alert('Message sent successfully!');
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-white pt-16 pb-16">
+      <section className="relative bg-white pt-32 pb-16">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Information */}
@@ -103,14 +127,7 @@ const Contact: React.FC = () => {
           <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md animate-fade-up">
             <h2 className="text-2xl font-bold mb-6 text-hosting-orange text-center">Contact Us Today</h2>
             
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              // Form submission logic would go here
-              console.log('Form submitted');
-              // Reset form after submission
-              // Show success message or redirect
-              alert('Message sent successfully!');
-            }}>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-hosting-dark-gray mb-2">Name:</label>
                 <input
@@ -249,7 +266,7 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="text-center">
-                <Button type="submit" variant="default" className="px-8">
+                <Button type="submit" variant="primary" className="px-8">
                   Send Message
                 </Button>
               </div>
