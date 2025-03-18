@@ -8,10 +8,16 @@ import {
   CarouselPrevious 
 } from "@/components/ui/carousel";
 import { useInterval } from '@/hooks/use-interval';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface Banner {
   id: number;
   image: string;
+  title: string;
+  subtitle: string;
+  ctaText: string;
+  ctaLink: string;
 }
 
 const BannerCarousel: React.FC = () => {
@@ -21,18 +27,42 @@ const BannerCarousel: React.FC = () => {
     {
       id: 1,
       image: "public/lovable-uploads/cc5a2576-c1e7-4f41-95b3-0c097c3eed87.png",
+      title: "Transforming Businesses with Technology",
+      subtitle: "Innovative IT solutions to drive your success",
+      ctaText: "Explore Our Services",
+      ctaLink: "/services"
     },
     {
       id: 2,
       image: "public/lovable-uploads/60d97b9b-0b6d-4741-8412-58e4d5ca12aa.png",
+      title: "Secure & Reliable Hosting",
+      subtitle: "99.9% uptime guarantee with 24/7 expert support",
+      ctaText: "View Hosting Plans",
+      ctaLink: "/hosting"
     },
     {
       id: 3,
       image: "public/lovable-uploads/9bbf696f-10d8-4c67-a83c-094082328af0.png",
+      title: "Fast & Reliable Internet Connectivity",
+      subtitle: "High-speed solutions for homes and businesses",
+      ctaText: "Check Coverage",
+      ctaLink: "/connectivity"
     },
     {
       id: 4,
       image: "public/lovable-uploads/a1404c56-4425-4cdd-b4bd-1aecc74a29cc.png",
+      title: "Harness the Power of Solar Energy",
+      subtitle: "Sustainable solutions to reduce costs and carbon footprint",
+      ctaText: "Solar Solutions",
+      ctaLink: "/solar-solutions"
+    },
+    {
+      id: 5,
+      image: "public/lovable-uploads/44098d1d-943c-4c35-b66f-53846424051d.png",
+      title: "Comprehensive Security Solutions",
+      subtitle: "Protect your digital assets with our advanced security",
+      ctaText: "Learn About Security",
+      ctaLink: "/security"
     }
   ];
 
@@ -52,7 +82,6 @@ const BannerCarousel: React.FC = () => {
           dragFree: false,
           skipSnaps: false,
           inViewThreshold: 0.7,
-          // Add smooth transition
           duration: 30,
         }}
         setApi={(api) => {
@@ -70,8 +99,19 @@ const BannerCarousel: React.FC = () => {
                 <img 
                   src={banner.image} 
                   alt={`Banner ${banner.id}`} 
-                  className="w-full object-cover object-center transition-all duration-500"
+                  className="w-full object-cover object-center transition-all duration-500 h-[500px]"
                 />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
+                  <div className="container-custom">
+                    <div className="max-w-lg text-white p-8 bg-black/30 backdrop-blur-sm rounded-lg">
+                      <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up">{banner.title}</h2>
+                      <p className="text-lg md:text-xl mb-6 text-white/80 animate-fade-up animate-delay-100">{banner.subtitle}</p>
+                      <Button asChild className="bg-hosting-orange hover:bg-opacity-90 animate-fade-up animate-delay-200">
+                        <Link to={banner.ctaLink}>{banner.ctaText}</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </CarouselItem>
           ))}
