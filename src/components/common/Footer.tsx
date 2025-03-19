@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { Facebook } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -12,6 +12,18 @@ const Footer: React.FC = () => {
     { name: 'Services', path: '/services' },
     { name: 'About Us', path: '/about-us' },
     { name: 'Contact', path: '/contact' },
+  ];
+
+  const legalLinks = [
+    { name: 'Terms & Conditions', path: '/terms' },
+    { name: 'Privacy Policy', path: '/privacy' },
+  ];
+
+  const socialLinks = [
+    { icon: Facebook, label: 'Facebook', url: '#' },
+    { icon: Instagram, label: 'Instagram', url: '#' },
+    { icon: Twitter, label: 'Twitter', url: '#' },
+    { icon: Linkedin, label: 'LinkedIn', url: '#' },
   ];
 
   return (
@@ -25,16 +37,13 @@ const Footer: React.FC = () => {
               Empowering your digital journey with reliable, secure, and innovative solutions.
             </p>
             <ul className="space-y-2">
-              <li>
-                <Link to="/terms" className="text-hosting-orange text-sm hover:underline">
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" className="text-hosting-orange text-sm hover:underline">
-                  Privacy Policy
-                </Link>
-              </li>
+              {legalLinks.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-hosting-orange text-sm hover:underline">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
@@ -59,13 +68,22 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-medium mb-4 text-hosting-dark-gray">Connect With Us</h3>
             <div className="flex space-x-4">
-              <a 
-                href="#" 
-                className="bg-transparent border border-hosting-dark-gray text-hosting-dark-gray hover:bg-hosting-orange hover:border-hosting-orange hover:text-white p-2 rounded-full transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
-              </a>
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.label}
+                  href={social.url} 
+                  className="bg-transparent border border-hosting-dark-gray text-hosting-dark-gray hover:bg-hosting-orange hover:border-hosting-orange hover:text-white p-2 rounded-full transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon size={20} />
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-6">
+              <h4 className="text-md font-medium mb-2 text-hosting-dark-gray">Contact Us</h4>
+              <p className="text-sm text-hosting-medium-gray">Email: support@hostingkzn.com</p>
+              <p className="text-sm text-hosting-medium-gray">Phone: +27 (0) 123 456 789</p>
             </div>
           </div>
         </div>

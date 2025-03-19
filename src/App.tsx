@@ -21,6 +21,8 @@ import Security from "./pages/Security";
 import VpnServices from "./pages/VpnServices";
 import SolarSolutions from "./pages/SolarSolutions";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 // Create a Supabase context
@@ -81,6 +83,8 @@ const App = () => {
                 <Route path="/vpn-services" element={<VpnServices />} />
                 <Route path="/solar-solutions" element={<SolarSolutions />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
