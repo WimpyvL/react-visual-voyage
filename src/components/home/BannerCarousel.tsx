@@ -20,19 +20,19 @@ const BannerCarousel: React.FC = () => {
   const banners: Banner[] = [
     {
       id: 1,
-      image: "public/lovable-uploads/cc5a2576-c1e7-4f41-95b3-0c097c3eed87.png",
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=1200&h=500",
     },
     {
       id: 2,
-      image: "public/lovable-uploads/60d97b9b-0b6d-4741-8412-58e4d5ca12aa.png",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&h=500",
     },
     {
       id: 3,
-      image: "public/lovable-uploads/9bbf696f-10d8-4c67-a83c-094082328af0.png",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=500",
     },
     {
       id: 4,
-      image: "public/lovable-uploads/a1404c56-4425-4cdd-b4bd-1aecc74a29cc.png",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&h=500",
     }
   ];
 

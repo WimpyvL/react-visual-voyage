@@ -107,13 +107,13 @@ const AiIntegration: React.FC = () => {
             <div className="relative">
               <div className="flex justify-center mb-6">
                 <img 
-                  src="public/lovable-uploads/b82e9649-4fbd-44e1-b6f2-55e1fe02b7b5.png" 
+                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=160&h=160" 
                   alt="AI Integration" 
                   className="w-40 h-40 object-contain"
                 />
               </div>
               <img 
-                src="public/lovable-uploads/39d20756-a77f-4338-97d3-03dd31a3fff8.png" 
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600"
                 alt="AI Integration" 
                 className="w-full max-w-md mx-auto rounded-lg shadow-xl"
               />
