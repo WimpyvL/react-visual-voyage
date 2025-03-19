@@ -45,7 +45,7 @@ const SecuritySection: React.FC = () => {
           <div className="animate-fade-up">
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600" 
+                src="public/lovable-uploads/1618c6a8-2676-4ce0-9e99-7d65f17477f7.png" 
                 alt="Security Services" 
                 className="w-full max-w-md mx-auto rounded-lg shadow-xl"
               />
