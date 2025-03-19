@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail } from 'lucide-react';
+import MapComponent from '../components/common/MapComponent';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -110,9 +111,8 @@ const Contact: React.FC = () => {
             <div className="bg-white p-8 rounded-lg shadow-md animate-fade-up animate-delay-200">
               <h2 className="text-2xl font-bold mb-6 text-hosting-dark-gray">Our Location</h2>
               <div className="rounded-lg overflow-hidden">
-                <img 
-                  src="public/lovable-uploads/33c08630-d2a2-418c-9bbd-d1e4d9635fbb.png" 
-                  alt="Map Location" 
+                <MapComponent 
+                  address="28 Fancidale Heights, Marina Dr, Ramsgate, 4285" 
                   className="w-full h-64 object-cover"
                 />
               </div>
