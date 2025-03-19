@@ -51,6 +51,9 @@ const Hero: React.FC = () => {
             <Button asChild variant="outline" className="border-hosting-dark-gray text-hosting-dark-gray hover:bg-hosting-dark-gray hover:text-white px-6 py-3 rounded-md font-medium">
               <Link to="/contact">Contact Us</Link>
             </Button>
+            <Button asChild className="bg-hosting-dark-gray text-white hover:bg-opacity-90 px-6 py-3 rounded-md font-medium">
+              <Link to="/our-partners">Our Partners</Link>
+            </Button>
           </div>
         </div>
       </div>

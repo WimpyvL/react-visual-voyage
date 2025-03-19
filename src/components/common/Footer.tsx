@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Footer: React.FC = () => {
@@ -13,18 +13,12 @@ const Footer: React.FC = () => {
     { name: 'Services', path: '/services' },
     { name: 'About Us', path: '/about-us' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Our Partners', path: '/our-partners' },
   ];
 
   const legalLinks = [
     { name: 'Terms & Conditions', path: '/terms' },
     { name: 'Privacy Policy', path: '/privacy' },
-  ];
-
-  const socialLinks = [
-    { icon: Facebook, label: 'Facebook', url: '#' },
-    { icon: Instagram, label: 'Instagram', url: '#' },
-    { icon: Twitter, label: 'Twitter', url: '#' },
-    { icon: Linkedin, label: 'LinkedIn', url: '#' },
   ];
 
   return (
@@ -75,21 +69,20 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-medium mb-4 text-hosting-dark-gray">Connect With Us</h3>
             <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a 
-                  key={social.label}
-                  href={social.url} 
-                  className="bg-transparent border border-hosting-dark-gray text-hosting-dark-gray hover:bg-hosting-orange hover:border-hosting-orange hover:text-white p-2 rounded-full transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon size={20} />
-                </a>
-              ))}
+              <a 
+                href="https://www.facebook.com/hostingkzn.za" 
+                className="bg-transparent border border-hosting-dark-gray text-hosting-dark-gray hover:bg-hosting-orange hover:border-hosting-orange hover:text-white p-2 rounded-full transition-colors"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Facebook size={20} />
+              </a>
             </div>
 
             <div className="mt-6">
               <h4 className="text-md font-medium mb-2 text-hosting-dark-gray">Contact Us</h4>
-              <p className="text-sm text-hosting-medium-gray">Email: support@hostingkzn.com</p>
+              <p className="text-sm text-hosting-medium-gray">Email: info@hostingkzn.co.za</p>
               <p className="text-sm text-hosting-medium-gray">Phone: +27 (0) 123 456 789</p>
             </div>
           </div>
@@ -99,10 +92,10 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-200 pt-8 pb-6 text-center">
           <h3 className="text-xl font-semibold mb-4 text-hosting-dark-gray">Ready to get started?</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild className="bg-hosting-orange hover:bg-opacity-90">
+            <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90">
               <Link to="/contact">Contact Us</Link>
             </Button>
-            <Button asChild variant="outline" className="border-hosting-orange text-hosting-orange hover:bg-hosting-orange/10">
+            <Button asChild variant="outline" className="border-hosting-orange text-hosting-orange hover:bg-hosting-orange hover:text-white">
               <Link to="/services">Our Services</Link>
             </Button>
           </div>
