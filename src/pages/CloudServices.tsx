@@ -3,7 +3,8 @@ import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
 import { Button } from "@/components/ui/button";
-import { HardDrive, RefreshCw, Shield, Server, DollarSign, Scale, LockKeyhole, CheckCircle2 } from 'lucide-react';
+import { HardDrive, RefreshCw, Shield, Server, DollarSign, Scale, LockKeyhole, CheckCircle2, Cloud, Database, Cpu, Users } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const CloudServices: React.FC = () => {
   const services = [
@@ -52,8 +53,36 @@ const CloudServices: React.FC = () => {
     }
   ];
 
+  const offerings = [
+    {
+      title: 'Microsoft Azure',
+      description: 'Complete Azure solution implementation and management.',
+      icon: <Cloud size={36} />
+    },
+    {
+      title: 'AWS Services',
+      description: 'Expert implementation of Amazon Web Services infrastructure.',
+      icon: <Database size={36} />
+    },
+    {
+      title: 'Google Cloud',
+      description: 'Google Cloud Platform deployment and optimization.',
+      icon: <Cpu size={36} />
+    },
+    {
+      title: 'Managed Services',
+      description: '24/7 monitoring and management of your cloud infrastructure.',
+      icon: <Users size={36} />
+    }
+  ];
+
   return (
     <Layout>
+      <Helmet>
+        <title>Cloud Services | Host Africa</title>
+        <meta name="description" content="Empower your business with scalable, secure, and efficient cloud solutions from Host Africa." />
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="relative bg-hosting-dark-gray pt-32 pb-16 text-white text-center">
         <div className="container-custom">
@@ -86,8 +115,30 @@ const CloudServices: React.FC = () => {
         </div>
       </section>
 
-      {/* Why Choose Section */}
+      {/* Cloud Providers */}
       <section className="py-16 bg-hosting-light-gray">
+        <div className="container-custom">
+          <h2 className="section-heading animate-fade-up">Cloud Providers We Support</h2>
+          <div className="section-heading-divider animate-fade-up animate-delay-100"></div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+            {offerings.map((offering, index) => (
+              <ServiceCard
+                key={offering.title}
+                title={offering.title}
+                description={offering.description}
+                icon={offering.icon}
+                className="animate-fade-up"
+                containerClassName="h-full"
+                hoverEffect={true}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Section */}
+      <section className="py-16 bg-white">
         <div className="container-custom">
           <h2 className="section-heading animate-fade-up">Why Choose Our Cloud Services?</h2>
           <div className="section-heading-divider animate-fade-up animate-delay-100"></div>

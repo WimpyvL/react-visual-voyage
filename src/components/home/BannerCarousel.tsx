@@ -101,15 +101,13 @@ const BannerCarousel: React.FC = () => {
                   alt={`Banner ${banner.id}`} 
                   className="w-full object-cover object-center transition-all duration-500 h-[500px]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
-                  <div className="container-custom">
-                    <div className="max-w-lg text-white p-8 bg-black/30 backdrop-blur-sm rounded-lg">
-                      <h2 className="text-3xl md:text-4xl font-bold mb-3 animate-fade-up">{banner.title}</h2>
-                      <p className="text-lg md:text-xl mb-6 text-white/80 animate-fade-up animate-delay-100">{banner.subtitle}</p>
-                      <Button asChild className="bg-hosting-orange hover:bg-opacity-90 animate-fade-up animate-delay-200">
-                        <Link to={banner.ctaLink}>{banner.ctaText}</Link>
-                      </Button>
-                    </div>
+                <div className="absolute bottom-8 left-8 md:left-16 z-10 max-w-lg">
+                  <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-2 text-hosting-dark-gray animate-fade-up">{banner.title}</h2>
+                    <p className="text-base md:text-lg mb-4 text-hosting-medium-gray animate-fade-up animate-delay-100">{banner.subtitle}</p>
+                    <Button asChild className="bg-hosting-orange hover:bg-opacity-90 animate-fade-up animate-delay-200">
+                      <Link to={banner.ctaLink}>{banner.ctaText}</Link>
+                    </Button>
                   </div>
                 </div>
               </div>
