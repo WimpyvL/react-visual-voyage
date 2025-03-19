@@ -42,7 +42,7 @@ const BannerCarousel: React.FC = () => {
   }, 5000);
 
   return (
-    <section className="w-full relative h-auto mt-16">
+    <section className="w-full relative h-auto mt-0"> {/* Changed mt-16 to mt-0 to remove space */}
       <Carousel 
         className="w-full" 
         opts={{

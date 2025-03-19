@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 
 interface FormServices {
   webDevelopment: boolean;
@@ -92,7 +93,26 @@ Message: ${formData.message}
         `,
       };
 
-      // Send the form data to our email endpoint
+      // Store the contact submission in Supabase
+      const { error: dbError } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            contact_number: formData.contactNumber,
+            services: selectedServices,
+            message: formData.message,
+            created_at: new Date().toISOString(),
+          }
+        ]);
+
+      if (dbError) {
+        console.error('Error storing contact in database:', dbError);
+        // Continue with email sending even if database storage fails
+      }
+
+      // Send the form data to email endpoint
       const response = await fetch('https://formsubmit.co/info@hostingkzn.com', {
         method: 'POST',
         headers: {
