@@ -2,6 +2,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from "@/components/ui/button";
+import { Helmet } from 'react-helmet-async';
 
 const AboutUs: React.FC = () => {
   const team = [
@@ -24,6 +25,11 @@ const AboutUs: React.FC = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>About Us | Hosting KZN</title>
+        <meta name="description" content="Learn about Hosting KZN's journey, mission, vision, and the team behind our successful hosting and IT solutions." />
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="relative bg-hosting-dark-gray pt-32 pb-16 text-white text-center">
         <div className="container-custom">
@@ -66,6 +72,13 @@ const AboutUs: React.FC = () => {
           <div className="section-heading-divider animate-fade-up animate-delay-100"></div>
           
           <div className="max-w-3xl mx-auto mt-12">
+            <div className="text-center mb-8">
+              <img 
+                src="public/lovable-uploads/d44f5e5f-7225-4c1d-8aa1-a0bf4cc77219.png" 
+                alt="Our Community" 
+                className="mx-auto w-32 h-32 object-contain"
+              />
+            </div>
             <p className="text-center text-hosting-medium-gray mb-8 animate-fade-up animate-delay-200">
               Founded in 2007, Hosting KZN started with a simple but ambitious idea: to help businesses leverage technology to drive progress. From our beginnings as a small hosting provider, we have grown into a leading service provider in South Africa and abroad.
             </p>

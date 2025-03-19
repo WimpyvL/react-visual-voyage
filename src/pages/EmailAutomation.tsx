@@ -119,11 +119,19 @@ const EmailAutomation: React.FC = () => {
           </div>
           
           <div className="text-center mt-16">
-            <img 
-              src="public/lovable-uploads/e6baa995-cea2-4923-ac5e-0f4202c04a38.png" 
-              alt="Everlytic Partnership" 
-              className="mx-auto h-12 object-contain"
-            />
+            <div className="flex flex-col items-center">
+              <p className="text-hosting-medium-gray mb-4">Email solutions powered by:</p>
+              <img 
+                src="public/lovable-uploads/ceae3c51-ebc9-45b1-a7ab-38a172d8c679.png" 
+                alt="Everlytic" 
+                className="mx-auto h-12 object-contain mb-2"
+              />
+              <img 
+                src="public/lovable-uploads/5dbc5e7e-9dcd-4df6-a2da-06776d143f49.png" 
+                alt="Email Automation" 
+                className="mx-auto h-20 object-contain mt-4"
+              />
+            </div>
           </div>
         </div>
       </section>

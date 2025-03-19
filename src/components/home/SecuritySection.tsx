@@ -45,7 +45,7 @@ const SecuritySection: React.FC = () => {
           <div className="animate-fade-up">
             <div className="relative">
               <img 
-                src="public/lovable-uploads/89dd90dc-9542-4135-8036-cca5e2a522a8.png" 
+                src="public/lovable-uploads/1618c6a8-2676-4ce0-9e99-7d65f17477f7.png" 
                 alt="Security Services" 
                 className="w-full max-w-md mx-auto rounded-lg shadow-xl"
               />
@@ -109,9 +109,9 @@ const SecuritySection: React.FC = () => {
                   <a href="/security">LEARN MORE</a>
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80 p-4">
+              <HoverCardContent className="w-80 p-4 bg-white text-hosting-dark-gray">
                 <div className="space-y-2">
-                  <h3 className="font-bold text-lg text-hosting-dark-gray">Security Statistics</h3>
+                  <h3 className="font-bold text-lg text-hosting-orange">Security Statistics</h3>
                   <ul className="space-y-2 text-sm text-hosting-medium-gray">
                     <li className="flex items-center">
                       <ArrowRight className="w-4 h-4 text-hosting-orange mr-2" />

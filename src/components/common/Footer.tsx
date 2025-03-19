@@ -32,7 +32,13 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <Logo className="mb-4" />
+            <div className="mb-4">
+              <img 
+                src="public/lovable-uploads/ca2b907c-14e4-41c4-b440-d5d94066ef4f.png" 
+                alt="Hosting KZN" 
+                className="h-12 object-contain"
+              />
+            </div>
             <p className="text-hosting-medium-gray mb-4 text-sm">
               Empowering your digital journey with reliable, secure, and innovative solutions.
             </p>

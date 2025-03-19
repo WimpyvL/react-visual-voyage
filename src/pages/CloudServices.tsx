@@ -112,6 +112,23 @@ const CloudServices: React.FC = () => {
               />
             ))}
           </div>
+          
+          <div className="text-center mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="flex flex-col items-center">
+              <img 
+                src="public/lovable-uploads/ef1fd266-72fc-43c3-a60e-d59119b60a88.png" 
+                alt="Google Cloud Partner" 
+                className="mx-auto w-32 h-32 object-contain"
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <img 
+                src="public/lovable-uploads/d871fb3b-bd23-46a1-adcf-ee0290c701d8.png" 
+                alt="Cloud Infrastructure" 
+                className="mx-auto w-32 h-32 object-contain"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

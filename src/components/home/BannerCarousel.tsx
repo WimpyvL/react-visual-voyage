@@ -102,7 +102,7 @@ const BannerCarousel: React.FC = () => {
                   className="w-full object-cover object-center transition-all duration-500 h-[500px]"
                 />
                 <div className="absolute bottom-8 left-8 md:left-16 z-10 max-w-lg">
-                  <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg">
+                  <div className="bg-white/80 p-6 rounded-lg shadow-lg">
                     <h2 className="text-2xl md:text-3xl font-bold mb-2 text-hosting-dark-gray animate-fade-up">{banner.title}</h2>
                     <p className="text-base md:text-lg mb-4 text-hosting-medium-gray animate-fade-up animate-delay-100">{banner.subtitle}</p>
                     <Button asChild className="bg-hosting-orange hover:bg-opacity-90 animate-fade-up animate-delay-200">

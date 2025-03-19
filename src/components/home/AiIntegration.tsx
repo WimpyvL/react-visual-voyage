@@ -65,7 +65,7 @@ const AiIntegration: React.FC = () => {
               <li className="flex items-start">
                 <FileCheck className="text-hosting-orange mr-2 mt-1 flex-shrink-0" />
                 <div>
-                  <span className="text-hosting-orange font-medium">Customer Satisfaction:</span>
+                  <span className="text-hosting-orange font-medium">Customer Trust:</span>
                   <span className="ml-2 text-gray-300">We prioritize our clients' needs, always ensuring they receive solutions tailored to their unique requirements.</span>
                 </div>
               </li>
@@ -88,7 +88,7 @@ const AiIntegration: React.FC = () => {
             <Popover>
               <PopoverTrigger asChild>
                 <Button className="bg-hosting-orange text-white hover:bg-opacity-90 px-6 py-3 rounded-md font-medium">
-                  LEARN MORE
+                  <a href="/services">LEARN MORE</a>
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80 p-4 bg-white text-hosting-dark-gray">
@@ -105,8 +105,15 @@ const AiIntegration: React.FC = () => {
           
           <div className="order-1 md:order-2 animate-fade-up animate-delay-200">
             <div className="relative">
+              <div className="flex justify-center mb-6">
+                <img 
+                  src="public/lovable-uploads/b82e9649-4fbd-44e1-b6f2-55e1fe02b7b5.png" 
+                  alt="AI Integration" 
+                  className="w-40 h-40 object-contain"
+                />
+              </div>
               <img 
-                src="public/lovable-uploads/74007c39-f013-4b76-85bd-127009c0fb8d.png" 
+                src="public/lovable-uploads/39d20756-a77f-4338-97d3-03dd31a3fff8.png" 
                 alt="AI Integration" 
                 className="w-full max-w-md mx-auto rounded-lg shadow-xl"
               />

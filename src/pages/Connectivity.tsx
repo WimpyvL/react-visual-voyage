@@ -4,6 +4,7 @@ import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
 import { Button } from "@/components/ui/button";
 import { Wifi, Radio, Network, Clock, CheckCircle2, Sliders, Shield } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const Connectivity: React.FC = () => {
   const services = [
@@ -49,6 +50,11 @@ const Connectivity: React.FC = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Connectivity Solutions | Hosting KZN</title>
+        <meta name="description" content="High-speed fiber and wireless connectivity solutions for your business and home needs." />
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="relative bg-hosting-dark-gray pt-32 pb-16 text-white text-center">
         <div className="container-custom">
@@ -79,15 +85,23 @@ const Connectivity: React.FC = () => {
             ))}
           </div>
           
-          <div className="text-center mt-12">
-            <p className="text-hosting-medium-gray mb-8">
-              Click the image below to learn more about Vox's services.
-            </p>
-            <img 
-              src="public/lovable-uploads/323beb51-31fa-4980-8795-b1a9ca7b3156.png" 
-              alt="Vox Partnership" 
-              className="mx-auto w-32 h-32 object-contain"
-            />
+          <div className="text-center mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col items-center">
+              <p className="text-hosting-medium-gray mb-4">In partnership with:</p>
+              <img 
+                src="public/lovable-uploads/076af7fb-31b5-49b6-8145-7451f87b7a16.png" 
+                alt="Vox Partnership" 
+                className="mx-auto w-32 h-32 object-contain"
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-hosting-medium-gray mb-4">High-speed fiber solutions:</p>
+              <img 
+                src="public/lovable-uploads/1dee1658-e5a9-4d52-8a0a-1b71f85fdd73.png" 
+                alt="Fiber Connectivity" 
+                className="mx-auto w-32 h-32 object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -3,85 +3,140 @@ import React from 'react';
 import Layout from '../components/layout/Layout';
 import ServiceCard from '../components/common/ServiceCard';
 import { Button } from "@/components/ui/button";
-import { Zap, MapPin, Shield, Eye, HeadphonesIcon, Globe } from 'lucide-react';
+import { Shield, Globe, Lock, Users, RefreshCw, Laptop, Building, Settings } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const VpnServices: React.FC = () => {
-  const features = [
+  const benefits = [
     {
-      title: 'High-Speed Connections',
-      description: 'Experience fast and reliable VPN connections.',
-      icon: <Zap size={36} />
-    },
-    {
-      title: 'Multiple Server Locations',
-      description: 'Connect to servers worldwide for optimal performance.',
-      icon: <MapPin size={36} />
-    },
-    {
-      title: 'Strong Encryption Protocols',
-      description: 'Protect your data with advanced encryption.',
+      title: 'Enhanced Security',
+      description: 'Protect your sensitive data with military-grade encryption.',
       icon: <Shield size={36} />
     },
     {
-      title: 'No Logs Policy',
-      description: 'We do not track or store your browsing activity.',
-      icon: <Eye size={36} />
-    },
-    {
-      title: '24/7 Customer Support',
-      description: 'Get assistance whenever you need it.',
-      icon: <HeadphonesIcon size={36} />
-    },
-    {
-      title: 'Global Network',
-      description: 'Access content from anywhere in the world.',
+      title: 'Global Access',
+      description: 'Access resources worldwide without geographical restrictions.',
       icon: <Globe size={36} />
+    },
+    {
+      title: 'Privacy Protection',
+      description: 'Keep your online activities private and secure from third parties.',
+      icon: <Lock size={36} />
+    },
+    {
+      title: 'Multi-User Support',
+      description: 'Solutions for individual users, teams, and entire organizations.',
+      icon: <Users size={36} />
     }
   ];
 
-  const steps = [
+  const solutions = [
     {
-      step: 1,
-      title: 'Consultation',
-      description: 'Discuss your VPN needs with our experts.'
+      title: 'Site-to-Site VPN',
+      description: 'Connect multiple office locations securely as if they were on the same local network.',
+      icon: <RefreshCw size={36} />
     },
     {
-      step: 2,
-      title: 'Setup',
-      description: "We'll guide you through the setup process."
+      title: 'Remote Access VPN',
+      description: 'Provide secure access to your network for remote employees and travelers.',
+      icon: <Laptop size={36} />
     },
     {
-      step: 3,
-      title: 'Secure Connection',
-      description: 'Start browsing securely and privately.'
+      title: 'Business VPN',
+      description: 'Enterprise-grade solutions with advanced features and centralized management.',
+      icon: <Building size={36} />
+    },
+    {
+      title: 'Custom VPN Setup',
+      description: 'Tailored solutions designed to meet your specific security requirements.',
+      icon: <Settings size={36} />
     }
   ];
 
   return (
     <Layout>
+      <Helmet>
+        <title>VPN Services | Hosting KZN</title>
+        <meta name="description" content="Secure, reliable VPN solutions for businesses and individuals to protect sensitive data and ensure private browsing." />
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="relative bg-hosting-dark-gray pt-32 pb-16 text-white text-center">
         <div className="container-custom">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-up">VPN Services</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-up animate-delay-100">
-            Secure and private internet browsing with our VPN services.
+            Secure, reliable VPN solutions for businesses and individuals
           </p>
         </div>
       </section>
 
-      {/* Features */}
+      {/* Main Content */}
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <h2 className="section-heading animate-fade-up">Our VPN Service Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-up">
+              <h2 className="text-3xl font-bold mb-4 text-hosting-dark-gray">Why You Need a VPN</h2>
+              <div className="w-16 h-1 bg-hosting-orange mb-6"></div>
+              <p className="text-hosting-medium-gray mb-6">
+                In today's digital landscape, cybersecurity is more important than ever. A Virtual Private Network (VPN) creates a secure, encrypted connection for your data, protecting it from hackers, surveillance, and other threats.
+              </p>
+              <p className="text-hosting-medium-gray mb-6">
+                Our VPN solutions provide robust protection for your business communications, remote access capabilities, and data privacy—all managed with the highest levels of security and reliability.
+              </p>
+              <Button 
+                asChild
+                className="bg-hosting-orange text-white hover:bg-opacity-90"
+              >
+                <a href="/contact">Get Started</a>
+              </Button>
+            </div>
+            
+            <div className="animate-fade-up animate-delay-200 flex justify-center">
+              <img 
+                src="public/lovable-uploads/f746fffe-b19c-46b7-89a9-73e322d85c7f.png" 
+                alt="VPN Services" 
+                className="w-64 h-64 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-16 bg-hosting-light-gray">
+        <div className="container-custom">
+          <h2 className="section-heading animate-fade-up">Key Benefits</h2>
           <div className="section-heading-divider animate-fade-up animate-delay-100"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {features.map((feature, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+            {benefits.map((benefit, index) => (
               <ServiceCard
-                key={feature.title}
-                title={feature.title}
-                description={feature.description}
-                icon={feature.icon}
+                key={benefit.title}
+                title={benefit.title}
+                description={benefit.description}
+                icon={benefit.icon}
+                className="animate-fade-up"
+                containerClassName="h-full"
+                hoverEffect={true}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <h2 className="section-heading animate-fade-up">Our VPN Solutions</h2>
+          <div className="section-heading-divider animate-fade-up animate-delay-100"></div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+            {solutions.map((solution, index) => (
+              <ServiceCard
+                key={solution.title}
+                title={solution.title}
+                description={solution.description}
+                icon={solution.icon}
                 className="animate-fade-up"
                 containerClassName="h-full"
                 hoverEffect={true}
@@ -92,59 +147,18 @@ const VpnServices: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-hosting-light-gray">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto animate-fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-hosting-dark-gray">
-              Ready to Secure Your Connection?
-            </h2>
-            <p className="text-hosting-medium-gray mb-8">
-              Contact us today to learn more about our VPN services.
-            </p>
-            <Button 
-              asChild 
-              variant="default"
-              className="bg-hosting-orange hover:bg-hosting-orange/90 text-white"
-            >
-              <span>Get Started</span>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* How to Get Started */}
-      <section className="py-16 bg-white">
-        <div className="container-custom">
-          <h2 className="section-heading animate-fade-up">How to Get Started</h2>
-          <div className="section-heading-divider animate-fade-up animate-delay-100"></div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            {steps.map((step) => (
-              <div key={step.step} className="text-center animate-fade-up">
-                <div className="bg-hosting-orange text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-xl font-semibold">
-                  {step.step}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-hosting-medium-gray text-sm">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* More Info CTA */}
       <section className="py-16 bg-hosting-dark-gray text-white">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Need More Information?
+              Ready to Secure Your Digital Presence?
             </h2>
             <p className="text-gray-300 mb-8">
-              Contact us for a free consultation and quote.
+              Contact us today to discuss which VPN solution is right for your business.
             </p>
             <Button 
               asChild
-              variant="default"
+              variant="default" 
               className="bg-hosting-orange hover:bg-hosting-orange/90 text-white"
             >
               <a href="/contact">Contact Us</a>
