@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactForm: React.FC = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,6 +19,7 @@ const ContactForm: React.FC = () => {
     },
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -37,27 +40,78 @@ const ContactForm: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      contactNumber: '',
-      services: {
-        webDevelopment: false,
-        appDevelopment: false,
-        fibreLte: false,
-        securitySolutions: false,
-        solarSolutions: false,
-        aiIntegration: false,
-      },
-      message: '',
-    });
-    // Show success message or redirect
-    alert('Message sent successfully!');
+    setIsSubmitting(true);
+
+    try {
+      // Format selected services
+      const selectedServices = Object.entries(formData.services)
+        .filter(([_, isSelected]) => isSelected)
+        .map(([service]) => {
+          // Convert camelCase to readable format
+          return service
+            .replace(/([A-Z])/g, ' $1')
+            .replace(/^./, (str) => str.toUpperCase());
+        });
+
+      // Prepare email content
+      const emailContent = {
+        to: "info@hostingkzn.com",
+        subject: `Contact Form Submission from ${formData.name}`,
+        message: `
+Name: ${formData.name}
+Email: ${formData.email}
+Contact Number: ${formData.contactNumber}
+Services: ${selectedServices.join(', ') || 'None selected'}
+Message: ${formData.message}
+        `,
+      };
+
+      // Send the form data to our email endpoint
+      const response = await fetch('https://formsubmit.co/info@hostingkzn.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(emailContent),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent",
+          description: "Thank you for contacting us. We'll get back to you soon!",
+        });
+        
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          contactNumber: '',
+          services: {
+            webDevelopment: false,
+            appDevelopment: false,
+            fibreLte: false,
+            securitySolutions: false,
+            solarSolutions: false,
+            aiIntegration: false,
+          },
+          message: '',
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -194,20 +248,13 @@ const ContactForm: React.FC = () => {
           ></textarea>
         </div>
         
-        <div className="mb-6">
-          <div className="flex items-center justify-center">
-            <div className="border border-gray-300 rounded p-3 w-full max-w-xs text-center text-sm text-hosting-medium-gray">
-              reCAPTCHA verification
-            </div>
-          </div>
-        </div>
-        
         <div className="text-center">
           <Button 
             type="submit" 
             className="bg-hosting-orange hover:bg-hosting-orange/90 text-white px-8"
+            disabled={isSubmitting}
           >
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </Button>
         </div>
       </form>
