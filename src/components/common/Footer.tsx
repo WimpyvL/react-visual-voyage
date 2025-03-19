@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -29,7 +30,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-white pt-16 pb-8">
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Company Info */}
           <div>
             <div className="mb-4">
@@ -94,8 +95,21 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
+        {/* Call to Action */}
+        <div className="border-t border-gray-200 pt-8 pb-6 text-center">
+          <h3 className="text-xl font-semibold mb-4 text-hosting-dark-gray">Ready to get started?</h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild className="bg-hosting-orange hover:bg-opacity-90">
+              <Link to="/contact">Contact Us</Link>
+            </Button>
+            <Button asChild variant="outline" className="border-hosting-orange text-hosting-orange hover:bg-hosting-orange/10">
+              <Link to="/services">Our Services</Link>
+            </Button>
+          </div>
+        </div>
+        
         {/* Copyright */}
-        <div className="border-t border-gray-200 mt-12 pt-6 text-center text-sm text-hosting-medium-gray">
+        <div className="border-t border-gray-200 mt-6 pt-6 text-center text-sm text-hosting-medium-gray">
           <p>© {currentYear} Hosting KZN. All rights reserved | Designed with ♥ by Hosting KZN Team</p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -43,9 +44,12 @@ const Hero: React.FC = () => {
           <p className="text-xl text-hosting-medium-gray mb-8 max-w-xl mx-auto animate-fade-up animate-delay-300">
             Elevate your digital presence with our comprehensive range of web services
           </p>
-          <div className="animate-fade-up animate-delay-400">
+          <div className="flex flex-wrap justify-center gap-4 animate-fade-up animate-delay-400">
             <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90 px-6 py-3 rounded-md font-medium">
-              <a href="/services">Explore Our Services</a>
+              <Link to="/services">Explore Our Services</Link>
+            </Button>
+            <Button asChild variant="outline" className="border-hosting-dark-gray text-hosting-dark-gray hover:bg-hosting-dark-gray hover:text-white px-6 py-3 rounded-md font-medium">
+              <Link to="/contact">Contact Us</Link>
             </Button>
           </div>
         </div>
