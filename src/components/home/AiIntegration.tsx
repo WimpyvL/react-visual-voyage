@@ -1,34 +1,54 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { BrainCircuit, BarChart3, Database, Sparkles, Bot, Share2, FileCheck, ArrowRight } from "lucide-react";
+import { 
+  BrainCircuit, 
+  BarChart3, 
+  Database, 
+  Sparkles, 
+  Bot, 
+  Share2, 
+  FileCheck,
+  ArrowRight
+} from "lucide-react";
+
 const AiIntegration: React.FC = () => {
-  const aiFeatures = [{
-    icon: <BrainCircuit className="w-8 h-8 text-hosting-orange" />,
-    title: "Machine Learning",
-    description: "Custom ML models that adapt to your business needs"
-  }, {
-    icon: <BarChart3 className="w-8 h-8 text-hosting-orange" />,
-    title: "Predictive Analytics",
-    description: "Forecast trends and make data-driven decisions"
-  }, {
-    icon: <Database className="w-8 h-8 text-hosting-orange" />,
-    title: "Big Data Processing",
-    description: "Handle massive datasets with efficient architecture"
-  }, {
-    icon: <Sparkles className="w-8 h-8 text-hosting-orange" />,
-    title: "Natural Language Processing",
-    description: "Extract insights from text data automatically"
-  }, {
-    icon: <Bot className="w-8 h-8 text-hosting-orange" />,
-    title: "Chatbots & Automation",
-    description: "24/7 customer service with intelligent responses"
-  }, {
-    icon: <Share2 className="w-8 h-8 text-hosting-orange" />,
-    title: "Integration Services",
-    description: "Seamlessly connect AI with your existing systems"
-  }];
-  return <section className="py-20 bg-hosting-dark-gray text-white">
+  const aiFeatures = [
+    { 
+      icon: <BrainCircuit className="w-8 h-8 text-hosting-orange" />,
+      title: "Machine Learning",
+      description: "Custom ML models that adapt to your business needs"
+    },
+    { 
+      icon: <BarChart3 className="w-8 h-8 text-hosting-orange" />,
+      title: "Predictive Analytics",
+      description: "Forecast trends and make data-driven decisions"
+    },
+    { 
+      icon: <Database className="w-8 h-8 text-hosting-orange" />,
+      title: "Big Data Processing",
+      description: "Handle massive datasets with efficient architecture"
+    },
+    { 
+      icon: <Sparkles className="w-8 h-8 text-hosting-orange" />,
+      title: "Natural Language Processing",
+      description: "Extract insights from text data automatically"
+    },
+    { 
+      icon: <Bot className="w-8 h-8 text-hosting-orange" />,
+      title: "Chatbots & Automation",
+      description: "24/7 customer service with intelligent responses"
+    },
+    { 
+      icon: <Share2 className="w-8 h-8 text-hosting-orange" />,
+      title: "Integration Services",
+      description: "Seamlessly connect AI with your existing systems"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-hosting-dark-gray text-white">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 animate-fade-up">
@@ -86,23 +106,38 @@ const AiIntegration: React.FC = () => {
           <div className="order-1 md:order-2 animate-fade-up animate-delay-200">
             <div className="relative">
               <div className="flex justify-center mb-6">
-                
+                <img 
+                  src="public/lovable-uploads/b82e9649-4fbd-44e1-b6f2-55e1fe02b7b5.png" 
+                  alt="AI Integration" 
+                  className="w-40 h-40 object-contain"
+                />
               </div>
-              <img alt="AI Integration" className="w-full max-w-md mx-auto rounded-lg shadow-xl" src="/lovable-uploads/1a7ea0bf-b9cf-4b20-8245-6b3c33d96b35.png" />
+              <img 
+                src="public/lovable-uploads/39d20756-a77f-4338-97d3-03dd31a3fff8.png" 
+                alt="AI Integration" 
+                className="w-full max-w-md mx-auto rounded-lg shadow-xl"
+              />
               
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-                {aiFeatures.map((feature, index) => <div key={index} className="bg-gray-800 p-4 rounded-lg transition-all duration-300 hover:bg-gray-700 hover:shadow-lg transform hover:-translate-y-1">
+                {aiFeatures.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className="bg-gray-800 p-4 rounded-lg transition-all duration-300 hover:bg-gray-700 hover:shadow-lg transform hover:-translate-y-1"
+                  >
                     <div className="flex flex-col items-center text-center">
                       {feature.icon}
                       <h3 className="text-white font-medium mt-2 mb-1">{feature.title}</h3>
                       <p className="text-gray-400 text-xs">{feature.description}</p>
                     </div>
-                  </div>)}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default AiIntegration;
