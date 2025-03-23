@@ -80,6 +80,31 @@ export const useContactForm = (): UseContactFormReturn => {
             .replace(/^./, (str) => str.toUpperCase());
         });
 
+      // Extract first and last name from full name
+      const nameParts = formData.name.split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      // Store as a client record in Supabase
+      const { error: dbError } = await supabase
+        .from('clients')
+        .insert([
+          {
+            first_name: firstName,
+            last_name: lastName,
+            email: formData.email,
+            phone: formData.contactNumber,
+            notes: `Message: ${formData.message}\nServices: ${selectedServices.join(', ') || 'None selected'}`,
+            status: 'lead',
+            created_at: new Date().toISOString(),
+          }
+        ]);
+
+      if (dbError) {
+        console.error('Error storing contact in database:', dbError);
+        // Continue with email sending even if database storage fails
+      }
+
       // Prepare email content
       const emailContent = {
         to: "info@hostingkzn.com",
@@ -92,25 +117,6 @@ Services: ${selectedServices.join(', ') || 'None selected'}
 Message: ${formData.message}
         `,
       };
-
-      // Store the contact submission in Supabase
-      const { error: dbError } = await supabase
-        .from('contact_submissions')
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            contact_number: formData.contactNumber,
-            services: selectedServices,
-            message: formData.message,
-            created_at: new Date().toISOString(),
-          }
-        ]);
-
-      if (dbError) {
-        console.error('Error storing contact in database:', dbError);
-        // Continue with email sending even if database storage fails
-      }
 
       // Send the form data to email endpoint
       const response = await fetch('https://formsubmit.co/info@hostingkzn.com', {
