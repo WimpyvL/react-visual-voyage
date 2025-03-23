@@ -1,20 +1,25 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, User, LogOut } from 'lucide-react';
 import Logo from './Logo';
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
   DropdownMenuGroup, 
   DropdownMenuItem, 
-  DropdownMenuTrigger 
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel
 } from "@/components/ui/dropdown-menu";
+import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { user, profile, signOut, isAdmin } = useAuth();
   
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -106,18 +111,122 @@ const Navbar: React.FC = () => {
             </DropdownMenu>
           </nav>
           
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden flex items-center p-2"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-hosting-dark-gray" />
+          {/* Auth Buttons or User Menu */}
+          <div className="hidden md:flex items-center space-x-4">
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative flex items-center space-x-2 h-10 w-10 rounded-full">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+                      <span className="text-primary-foreground font-medium">
+                        {profile?.first_name?.charAt(0) || ''}
+                        {profile?.last_name?.charAt(0) || ''}
+                      </span>
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end">
+                  <DropdownMenuLabel>
+                    <div className="font-normal">
+                      <p className="text-sm font-medium leading-none">
+                        {profile?.first_name} {profile?.last_name}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1 capitalize">
+                        {profile?.role}
+                      </p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    {isAdmin ? (
+                      <DropdownMenuItem asChild>
+                        <Link to="/admin/dashboard" className="cursor-pointer">
+                          <User className="mr-2 h-4 w-4" />
+                          <span>Admin Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuItem asChild>
+                        <Link to="/agent/dashboard" className="cursor-pointer">
+                          <User className="mr-2 h-4 w-4" />
+                          <span>Agent Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Sign Out</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ) : (
-              <Menu className="h-6 w-6 text-hosting-dark-gray" />
+              <>
+                <Link to="/auth/login">
+                  <Button variant="ghost">Sign In</Button>
+                </Link>
+                <Link to="/auth/register">
+                  <Button>Sign Up</Button>
+                </Link>
+              </>
             )}
-          </button>
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            {user && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="mr-2 h-8 w-8 rounded-full">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
+                      <span className="text-primary-foreground text-xs font-medium">
+                        {profile?.first_name?.charAt(0) || ''}
+                        {profile?.last_name?.charAt(0) || ''}
+                      </span>
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end">
+                  <DropdownMenuLabel>{profile?.first_name} {profile?.last_name}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    {isAdmin ? (
+                      <DropdownMenuItem asChild>
+                        <Link to="/admin/dashboard" className="cursor-pointer">
+                          <User className="mr-2 h-4 w-4" />
+                          <span>Admin Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuItem asChild>
+                        <Link to="/agent/dashboard" className="cursor-pointer">
+                          <User className="mr-2 h-4 w-4" />
+                          <span>Agent Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Sign Out</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="flex items-center p-2"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6 text-hosting-dark-gray" />
+              ) : (
+                <Menu className="h-6 w-6 text-hosting-dark-gray" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
       
@@ -159,6 +268,24 @@ const Navbar: React.FC = () => {
                   ))}
                 </div>
               </div>
+              
+              {/* Auth Links for Mobile */}
+              {!user && (
+                <div className="flex flex-col space-y-2 px-4 pt-2">
+                  <Link
+                    to="/auth/login"
+                    className="w-full py-2 px-4 text-center rounded-md border border-gray-300 text-hosting-dark-gray"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/auth/register"
+                    className="w-full py-2 px-4 text-center rounded-md bg-hosting-orange text-white"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              )}
             </nav>
           </div>
         </div>

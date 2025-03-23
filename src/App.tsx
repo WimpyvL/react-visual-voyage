@@ -4,10 +4,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createContext, useContext, useState, useEffect } from "react";
-import { Session } from "@supabase/supabase-js";
-import { supabase } from "@/lib/supabase";
 import { HelmetProvider } from 'react-helmet-async';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/common/ProtectedRoute';
+
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
@@ -25,52 +25,22 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import OurPartners from "./pages/OurPartners";
 import NotFound from "./pages/NotFound";
-
-// Create a Supabase context
-type SupabaseContextType = {
-  session: Session | null;
-};
-
-const SupabaseContext = createContext<SupabaseContextType | undefined>(undefined);
-
-export const useSupabase = () => {
-  const context = useContext(SupabaseContext);
-  if (context === undefined) {
-    throw new Error("useSupabase must be used within a SupabaseProvider");
-  }
-  return context;
-};
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    // Check for an existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    // Set up auth state listener
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
-      <SupabaseContext.Provider value={{ session }}>
-        <HelmetProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
+      <BrowserRouter>
+        <AuthProvider>
+          <HelmetProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
               <Routes>
+                {/* Public routes */}
                 <Route path="/" element={<Index />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/services" element={<Services />} />
@@ -87,13 +57,44 @@ const App = () => {
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/our-partners" element={<OurPartners />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                
+                {/* Auth routes */}
+                <Route path="/auth/login" element={<Login />} />
+                <Route path="/auth/register" element={<Register />} />
+                
+                {/* Admin routes */}
+                <Route 
+                  path="/admin/dashboard" 
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+                        <p className="text-gray-500">Coming soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+                
+                {/* Agent routes */}
+                <Route 
+                  path="/agent/dashboard" 
+                  element={
+                    <ProtectedRoute requiredRole="agent">
+                      <div className="p-8">
+                        <h1 className="text-2xl font-bold">Agent Dashboard</h1>
+                        <p className="text-gray-500">Coming soon</p>
+                      </div>
+                    </ProtectedRoute>
+                  } 
+                />
+                
+                {/* Catch-all route */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
-        </HelmetProvider>
-      </SupabaseContext.Provider>
+            </TooltipProvider>
+          </HelmetProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 };
