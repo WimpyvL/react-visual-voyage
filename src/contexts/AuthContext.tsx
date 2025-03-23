@@ -134,27 +134,39 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   ) => {
     try {
       setIsLoading(true);
-      console.log('Signing up with data:', { email, firstName, lastName, role });
       
-      // Make the role a string to ensure it's correctly passed in metadata
-      const { error, data } = await supabase.auth.signUp({
+      // First, create the user in Supabase auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
-        password,
-        options: {
-          data: {
+        password
+      });
+      
+      if (authError) {
+        throw authError;
+      }
+      
+      console.log("Auth signup successful:", authData);
+      
+      // If auth signup was successful and we have a user
+      if (authData.user) {
+        // Then manually insert the profile record
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .insert({
+            id: authData.user.id,
+            email: email,
             first_name: firstName,
             last_name: lastName,
             role: role
-          }
+          });
+        
+        if (profileError) {
+          console.error('Profile creation error:', profileError);
+          // Don't throw here, as the auth user was created successfully
+          toast.error('Account created but profile setup failed. Please contact support.');
         }
-      });
-      
-      if (error) {
-        console.error('Sign up API error:', error);
-        throw error;
       }
       
-      console.log("Sign up successful:", data);
       toast.success('Account created! Please check your email to confirm your registration.');
       navigate('/auth/login');
     } catch (error: any) {
@@ -162,8 +174,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       let errorMessage = 'Failed to create account';
       if (error.message) {
-        if (error.message.includes('Database error')) {
-          errorMessage = 'Database configuration error. Please contact support.';
+        if (error.message.includes('User already registered')) {
+          errorMessage = 'An account with this email already exists';
         } else {
           errorMessage = error.message;
         }
