@@ -76,10 +76,17 @@ export const signUp = async (
   try {
     setIsLoading(true);
     
-    // First, create the user in Supabase auth
+    // First, create the user in Supabase auth with metadata
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
-      password
+      password,
+      options: {
+        data: {
+          first_name: firstName,
+          last_name: lastName,
+          role: role
+        }
+      }
     });
     
     if (authError) {
@@ -87,26 +94,6 @@ export const signUp = async (
     }
     
     console.log("Auth signup successful:", authData);
-    
-    // If auth signup was successful and we have a user
-    if (authData.user) {
-      // Then manually insert the profile record
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .insert({
-          id: authData.user.id,
-          email: email,
-          first_name: firstName,
-          last_name: lastName,
-          role: role
-        });
-      
-      if (profileError) {
-        console.error('Profile creation error:', profileError);
-        // Don't throw here, as the auth user was created successfully
-        toast.error('Account created but profile setup failed. Please contact support.');
-      }
-    }
     
     toast.success('Account created! Please check your email to confirm your registration.');
     navigate('/auth/login');
