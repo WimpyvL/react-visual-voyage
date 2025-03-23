@@ -31,6 +31,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Set up auth state listener first
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        console.log('Auth state changed:', event, session?.user?.id);
         setSession(session);
         setUser(session?.user ?? null);
         
@@ -48,6 +49,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsLoading(true);
         
         const { data: { session } } = await supabase.auth.getSession();
+        console.log('Initializing auth with session:', session?.user?.id);
         setSession(session);
         setUser(session?.user ?? null);
         
@@ -70,6 +72,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchProfile = async (userId: string) => {
     try {
+      console.log('Fetching profile for user:', userId);
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
@@ -77,12 +80,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         .single();
 
       if (error) {
+        console.error('Error fetching profile:', error);
         throw error;
       }
 
+      console.log('Profile fetched:', data);
       setProfile(data as Profile);
     } catch (error) {
-      console.error('Error fetching profile:', error);
+      console.error('Error in fetchProfile:', error);
       setProfile(null);
     }
   };
@@ -115,6 +120,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   ) => {
     try {
       setIsLoading(true);
+      console.log('Signing up with data:', { email, firstName, lastName, role });
+      
       const { error, data } = await supabase.auth.signUp({
         email,
         password,
@@ -128,11 +135,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
       
       if (error) {
+        console.error('Sign up API error:', error);
         throw error;
       }
       
       console.log("Sign up successful:", data);
       toast.success('Account created! Please check your email to confirm your registration.');
+      navigate('/auth/login');
     } catch (error: any) {
       console.error('Sign up error:', error);
       toast.error(error.message || 'Failed to create account');
