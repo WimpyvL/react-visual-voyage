@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, User, LogOut } from 'lucide-react';
@@ -13,7 +12,7 @@ import {
   DropdownMenuLabel
 } from "@/components/ui/dropdown-menu";
 import { Button } from '@/components/ui/button';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,7 +53,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu on navigation
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
@@ -69,7 +67,6 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Logo />
           
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -85,7 +82,6 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
 
-            {/* Services Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger className="text-sm font-medium transition-colors hover:text-hosting-orange text-hosting-dark-gray flex items-center">
                 Services <ChevronDown className="ml-1 h-4 w-4" />
@@ -111,7 +107,6 @@ const Navbar: React.FC = () => {
             </DropdownMenu>
           </nav>
           
-          {/* Auth Buttons or User Menu */}
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <DropdownMenu>
@@ -173,7 +168,6 @@ const Navbar: React.FC = () => {
             )}
           </div>
           
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             {user && (
               <DropdownMenu>
@@ -230,7 +224,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       
-      {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md animate-fade-in">
           <div className="container mx-auto py-4">
@@ -249,7 +242,6 @@ const Navbar: React.FC = () => {
                 </Link>
               ))}
               
-              {/* Services section for mobile */}
               <div className="px-4 py-2">
                 <h3 className="text-base font-medium text-hosting-dark-gray mb-2">Services</h3>
                 <div className="pl-4 flex flex-col space-y-2">
@@ -269,7 +261,6 @@ const Navbar: React.FC = () => {
                 </div>
               </div>
               
-              {/* Auth Links for Mobile */}
               {!user && (
                 <div className="flex flex-col space-y-2 px-4 pt-2">
                   <Link
