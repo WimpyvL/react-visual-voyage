@@ -95,7 +95,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signIn = async (email: string, password: string) => {
     try {
       setIsLoading(true);
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      
+      const { data, error } = await supabase.auth.signInWithPassword({ 
+        email, 
+        password 
+      });
       
       if (error) {
         throw error;
@@ -104,7 +108,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       toast.success('Signed in successfully');
       navigate('/');
     } catch (error: any) {
-      toast.error(error.message || 'Failed to sign in');
+      let errorMessage = 'Failed to sign in';
+      
+      if (error.message) {
+        if (error.message.includes('Invalid login credentials')) {
+          errorMessage = 'Invalid email or password';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      toast.error(errorMessage);
       console.error('Sign in error:', error);
     } finally {
       setIsLoading(false);
@@ -122,6 +136,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsLoading(true);
       console.log('Signing up with data:', { email, firstName, lastName, role });
       
+      // Make the role a string to ensure it's correctly passed in metadata
       const { error, data } = await supabase.auth.signUp({
         email,
         password,
@@ -129,7 +144,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           data: {
             first_name: firstName,
             last_name: lastName,
-            role
+            role: role
           }
         }
       });
@@ -144,7 +159,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       navigate('/auth/login');
     } catch (error: any) {
       console.error('Sign up error:', error);
-      toast.error(error.message || 'Failed to create account');
+      
+      let errorMessage = 'Failed to create account';
+      if (error.message) {
+        if (error.message.includes('Database error')) {
+          errorMessage = 'Database configuration error. Please contact support.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
