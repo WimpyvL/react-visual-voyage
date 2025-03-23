@@ -1,53 +1,55 @@
 
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useAuthStore } from "./stores/authStore";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createContext, useContext, useState, useEffect } from "react";
+import { Session } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
+import { HelmetProvider } from 'react-helmet-async';
+import Index from "./pages/Index";
+import AboutUs from "./pages/AboutUs";
+import Services from "./pages/Services";
+import WebDesign from "./pages/WebDesign";
+import Hosting from "./pages/Hosting";
+import CloudServices from "./pages/CloudServices";
+import Connectivity from "./pages/Connectivity";
+import EmailAutomation from "./pages/EmailAutomation";
+import FibrePrepaid from "./pages/FibrePrepaid";
+import Security from "./pages/Security";
+import VpnServices from "./pages/VpnServices";
+import SolarSolutions from "./pages/SolarSolutions";
+import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import OurPartners from "./pages/OurPartners";
+import NotFound from "./pages/NotFound";
 
-// Auth
-import AuthPage from "./components/auth/AuthPage";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+// Create a Supabase context
+type SupabaseContextType = {
+  session: Session | null;
+};
 
-// Layouts
-import AdminLayout from "./components/layouts/AdminLayout";
-import AgentLayout from "./components/layouts/AgentLayout";
+const SupabaseContext = createContext<SupabaseContextType | undefined>(undefined);
 
-// Admin Pages
-import AdminDashboard from "./pages/admin/Dashboard";
-import AgentList from "./pages/admin/AgentList";
-import ClientList from "./pages/admin/ClientList";
-import ProductList from "./pages/admin/ProductList";
-import TransactionList from "./pages/admin/TransactionList";
-import CommissionList from "./pages/admin/CommissionList";
-import AdminSettings from "./pages/admin/Settings";
-
-// Agent Pages
-import AgentDashboard from "./pages/agent/Dashboard";
-import ClientRegistration from "./pages/agent/ClientRegistration";
-import ProductCatalog from "./pages/agent/ProductCatalog";
-import CommissionTracking from "./pages/agent/CommissionTracking";
-import AgentProfile from "./pages/agent/Profile";
+export const useSupabase = () => {
+  const context = useContext(SupabaseContext);
+  if (context === undefined) {
+    throw new Error("useSupabase must be used within a SupabaseProvider");
+  }
+  return context;
+};
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const { setUser, setSession, setRole } = useAuthStore();
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     // Check for an existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-      setUser(session?.user || null);
-      
-      // Set role based on user metadata
-      if (session?.user) {
-        const userRole = session.user.user_metadata.role as 'admin' | 'agent';
-        setRole(userRole || 'agent'); // Default to agent if role is not set
-      }
     });
 
     // Set up auth state listener
@@ -55,62 +57,43 @@ const App = () => {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      setUser(session?.user || null);
-      
-      // Set role based on user metadata
-      if (session?.user) {
-        const userRole = session.user.user_metadata.role as 'admin' | 'agent';
-        setRole(userRole || 'agent'); // Default to agent if role is not set
-      } else {
-        setRole(null);
-      }
     });
 
     return () => subscription.unsubscribe();
-  }, [setUser, setSession, setRole]);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            {/* Public route */}
-            <Route path="/auth" element={<AuthPage />} />
-            
-            {/* Default redirect to auth */}
-            <Route path="/" element={<Navigate to="/auth" replace />} />
-            
-            {/* Protected admin routes */}
-            <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<AdminDashboard />} />
-                <Route path="agents" element={<AgentList />} />
-                <Route path="clients" element={<ClientList />} />
-                <Route path="products" element={<ProductList />} />
-                <Route path="transactions" element={<TransactionList />} />
-                <Route path="commissions" element={<CommissionList />} />
-                <Route path="settings" element={<AdminSettings />} />
-              </Route>
-            </Route>
-            
-            {/* Protected agent routes */}
-            <Route element={<ProtectedRoute allowedRoles={['agent']} />}>
-              <Route path="/agent" element={<AgentLayout />}>
-                <Route index element={<AgentDashboard />} />
-                <Route path="clients/new" element={<ClientRegistration />} />
-                <Route path="products" element={<ProductCatalog />} />
-                <Route path="commissions" element={<CommissionTracking />} />
-                <Route path="profile" element={<AgentProfile />} />
-              </Route>
-            </Route>
-            
-            {/* Catch-all route */}
-            <Route path="*" element={<Navigate to="/auth" replace />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <SupabaseContext.Provider value={{ session }}>
+        <HelmetProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/web-design" element={<WebDesign />} />
+                <Route path="/hosting" element={<Hosting />} />
+                <Route path="/cloud-services" element={<CloudServices />} />
+                <Route path="/connectivity" element={<Connectivity />} />
+                <Route path="/email-automation" element={<EmailAutomation />} />
+                <Route path="/fibre-prepaid" element={<FibrePrepaid />} />
+                <Route path="/security" element={<Security />} />
+                <Route path="/vpn-services" element={<VpnServices />} />
+                <Route path="/solar-solutions" element={<SolarSolutions />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/our-partners" element={<OurPartners />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </HelmetProvider>
+      </SupabaseContext.Provider>
     </QueryClientProvider>
   );
 };
