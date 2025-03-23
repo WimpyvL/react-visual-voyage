@@ -1,11 +1,14 @@
+
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from "@/components/ui/button";
 import { Shield, Cloud, MessageSquare, Phone } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+
 const OurPartners: React.FC = () => {
-  return <Layout>
+  return (
+    <Layout>
       <Helmet>
         <title>Our Partners | Hosting KZN</title>
         <meta name="description" content="Discover our strategic partnerships that enhance our service offerings to deliver the best solutions for your business." />
@@ -45,13 +48,20 @@ const OurPartners: React.FC = () => {
                 Contact us to discover the best Microsoft 365 Business plan for your company. Please note that pricing is subject to the current Rate of Exchange to USD.
               </p>
               
-              <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90">
+              <Button 
+                asChild
+                className="bg-hosting-orange text-white hover:bg-opacity-90"
+              >
                 <Link to="/contact">Get Microsoft 365</Link>
               </Button>
             </div>
             
             <div className="animate-fade-up animate-delay-200 flex justify-center">
-              <img src="public/lovable-uploads/5dbc5e7e-9dcd-4df6-a2da-06776d143f49.png" alt="Microsoft 365" className="max-w-full h-auto object-contain" />
+              <img 
+                src="public/lovable-uploads/5dbc5e7e-9dcd-4df6-a2da-06776d143f49.png" 
+                alt="Microsoft 365" 
+                className="max-w-full h-auto object-contain"
+              />
             </div>
           </div>
         </div>
@@ -62,7 +72,11 @@ const OurPartners: React.FC = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 animate-fade-up animate-delay-200 flex justify-center">
-              <img alt="Kaspersky Security" className="max-w-full h-auto object-contain" src="/lovable-uploads/278dc575-9b73-4fed-ab9f-ec312b6af425.jpg" />
+              <img 
+                src="public/lovable-uploads/323beb51-31fa-4980-8795-b1a9ca7b3156.png" 
+                alt="Kaspersky Security" 
+                className="max-w-full h-auto object-contain"
+              />
             </div>
             
             <div className="order-1 md:order-2 animate-fade-up">
@@ -95,7 +109,10 @@ const OurPartners: React.FC = () => {
                 Get started quickly and easily, with no server setup or security policy configuration required. Focus on your business priorities while Kaspersky handles your IT security.
               </p>
               
-              <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90">
+              <Button 
+                asChild
+                className="bg-hosting-orange text-white hover:bg-opacity-90"
+              >
                 <Link to="/contact">Secure Your Business</Link>
               </Button>
             </div>
@@ -135,7 +152,10 @@ const OurPartners: React.FC = () => {
                 </li>
               </ul>
               <div className="text-center">
-                <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90 w-full">
+                <Button 
+                  asChild
+                  className="bg-hosting-orange text-white hover:bg-opacity-90 w-full"
+                >
                   <Link to="/contact">Check Availability</Link>
                 </Button>
               </div>
@@ -166,7 +186,10 @@ const OurPartners: React.FC = () => {
                 </li>
               </ul>
               <div className="text-center">
-                <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90 w-full">
+                <Button 
+                  asChild
+                  className="bg-hosting-orange text-white hover:bg-opacity-90 w-full"
+                >
                   <Link to="/contact">Check Availability</Link>
                 </Button>
               </div>
@@ -203,13 +226,20 @@ const OurPartners: React.FC = () => {
                 <li>Cost management and fixed monthly billing</li>
               </ul>
               
-              <Button asChild className="bg-hosting-orange text-white hover:bg-opacity-90">
+              <Button 
+                asChild
+                className="bg-hosting-orange text-white hover:bg-opacity-90"
+              >
                 <Link to="/contact">Get Voice Solutions</Link>
               </Button>
             </div>
             
             <div className="animate-fade-up animate-delay-200 flex justify-center">
-              <img src="public/lovable-uploads/076af7fb-31b5-49b6-8145-7451f87b7a16.png" alt="Vox Voice Solutions" className="max-w-full h-auto object-contain" />
+              <img 
+                src="public/lovable-uploads/076af7fb-31b5-49b6-8145-7451f87b7a16.png" 
+                alt="Vox Voice Solutions" 
+                className="max-w-full h-auto object-contain"
+              />
             </div>
           </div>
           
@@ -257,12 +287,18 @@ const OurPartners: React.FC = () => {
             <p className="text-white mb-8">
               Our partnerships allow us to offer comprehensive solutions that help your business thrive in the digital landscape.
             </p>
-            <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-hosting-orange">
+            <Button 
+              asChild
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-hosting-orange"
+            >
               <Link to="/contact">Contact Us Today</Link>
             </Button>
           </div>
         </div>
       </section>
-    </Layout>;
+    </Layout>
+  );
 };
+
 export default OurPartners;
