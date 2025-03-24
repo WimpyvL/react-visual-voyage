@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
       ref={heroRef}
       className="relative w-full flex items-center justify-center overflow-hidden bg-gray-100 py-24"
       style={{
-        background: 'linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url(public/lovable-uploads/96118922-4731-4dcc-a501-91620d979f63.png)',
+        background: 'linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url(/lovable-uploads/96118922-4731-4dcc-a501-91620d979f63.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}

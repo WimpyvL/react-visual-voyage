@@ -1,9 +1,11 @@
+
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from "@/components/ui/button";
 import { Shield, Cloud, MessageSquare, Phone } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+
 const OurPartners: React.FC = () => {
   return <Layout>
       <Helmet>
@@ -51,7 +53,7 @@ const OurPartners: React.FC = () => {
             </div>
             
             <div className="animate-fade-up animate-delay-200 flex justify-center">
-              <img src="public/lovable-uploads/5dbc5e7e-9dcd-4df6-a2da-06776d143f49.png" alt="Microsoft 365" className="max-w-full h-auto object-contain" />
+              <img src="/lovable-uploads/5dbc5e7e-9dcd-4df6-a2da-06776d143f49.png" alt="Microsoft 365" className="max-w-full h-auto object-contain" />
             </div>
           </div>
         </div>
@@ -62,7 +64,7 @@ const OurPartners: React.FC = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 animate-fade-up animate-delay-200 flex justify-center">
-              <img alt="Kaspersky Security" className="max-w-full h-auto object-contain" src="/lovable-uploads/278dc575-9b73-4fed-ab9f-ec312b6af425.jpg" />
+              <img src="/lovable-uploads/278dc575-9b73-4fed-ab9f-ec312b6af425.jpg" alt="Kaspersky Security" className="max-w-full h-auto object-contain" />
             </div>
             
             <div className="order-1 md:order-2 animate-fade-up">
@@ -209,7 +211,7 @@ const OurPartners: React.FC = () => {
             </div>
             
             <div className="animate-fade-up animate-delay-200 flex justify-center">
-              <img src="public/lovable-uploads/076af7fb-31b5-49b6-8145-7451f87b7a16.png" alt="Vox Voice Solutions" className="max-w-full h-auto object-contain" />
+              <img src="/lovable-uploads/076af7fb-31b5-49b6-8145-7451f87b7a16.png" alt="Vox Voice Solutions" className="max-w-full h-auto object-contain" />
             </div>
           </div>
           
@@ -265,4 +267,5 @@ const OurPartners: React.FC = () => {
       </section>
     </Layout>;
 };
+
 export default OurPartners;

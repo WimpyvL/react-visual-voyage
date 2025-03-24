@@ -93,7 +93,7 @@ const VpnServices: React.FC = () => {
             
             <div className="animate-fade-up animate-delay-200 flex justify-center">
               <img 
-                src="public/lovable-uploads/f746fffe-b19c-46b7-89a9-73e322d85c7f.png" 
+                src="/lovable-uploads/f746fffe-b19c-46b7-89a9-73e322d85c7f.png" 
                 alt="VPN Services" 
                 className="w-64 h-64 object-contain"
               />

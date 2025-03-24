@@ -9,17 +9,17 @@ const AboutUs: React.FC = () => {
     {
       name: 'Wessel Pretorius',
       role: 'Marketing',
-      image: 'public/lovable-uploads/e32d919f-c714-418e-91f8-15507f80df99.png'
+      image: '/lovable-uploads/e32d919f-c714-418e-91f8-15507f80df99.png'
     },
     {
       name: 'Marilize Pretorius',
       role: 'Administration',
-      image: 'public/lovable-uploads/2f42b785-50e7-4ce9-b084-e52af428d856.png'
+      image: '/lovable-uploads/2f42b785-50e7-4ce9-b084-e52af428d856.png'
     },
     {
       name: 'Wimpie van Loggerenberg',
       role: 'Technical Lead',
-      image: 'public/lovable-uploads/77c7afac-9352-4d24-8b0b-97201b2096e3.png'
+      image: '/lovable-uploads/77c7afac-9352-4d24-8b0b-97201b2096e3.png'
     }
   ];
 
@@ -74,7 +74,7 @@ const AboutUs: React.FC = () => {
           <div className="max-w-3xl mx-auto mt-12">
             <div className="text-center mb-8">
               <img 
-                src="public/lovable-uploads/d44f5e5f-7225-4c1d-8aa1-a0bf4cc77219.png" 
+                src="/lovable-uploads/d44f5e5f-7225-4c1d-8aa1-a0bf4cc77219.png" 
                 alt="Our Community" 
                 className="mx-auto w-32 h-32 object-contain"
               />

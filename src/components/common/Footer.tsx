@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="mb-4">
               <img 
-                src="public/lovable-uploads/ca2b907c-14e4-41c4-b440-d5d94066ef4f.png" 
+                src="/lovable-uploads/ca2b907c-14e4-41c4-b440-d5d94066ef4f.png" 
                 alt="Hosting KZN" 
                 className="h-12 object-contain"
               />

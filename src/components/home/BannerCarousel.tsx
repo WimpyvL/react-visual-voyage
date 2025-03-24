@@ -1,31 +1,35 @@
+
 import React, { useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useInterval } from '@/hooks/use-interval';
+
 interface Banner {
   id: number;
   image: string;
 }
+
 const BannerCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const banners: Banner[] = [{
     id: 1,
-    image: "public/lovable-uploads/cc5a2576-c1e7-4f41-95b3-0c097c3eed87.png"
+    image: "/lovable-uploads/cc5a2576-c1e7-4f41-95b3-0c097c3eed87.png"
   }, {
     id: 2,
-    image: "public/lovable-uploads/60d97b9b-0b6d-4741-8412-58e4d5ca12aa.png"
+    image: "/lovable-uploads/60d97b9b-0b6d-4741-8412-58e4d5ca12aa.png"
   }, {
     id: 3,
-    image: "public/lovable-uploads/9bbf696f-10d8-4c67-a83c-094082328af0.png"
+    image: "/lovable-uploads/9bbf696f-10d8-4c67-a83c-094082328af0.png"
   }, {
     id: 4,
-    image: "public/lovable-uploads/a1404c56-4425-4cdd-b4bd-1aecc74a29cc.png"
+    image: "/lovable-uploads/a1404c56-4425-4cdd-b4bd-1aecc74a29cc.png"
   }];
 
   // Auto-advance the carousel every 5 seconds
   useInterval(() => {
     setCurrentIndex(prevIndex => (prevIndex + 1) % banners.length);
   }, 5000);
-  return <section className="w-full relative h-auto mt-0"> {/* Changed mt-16 to mt-0 to remove space */}
+  
+  return <section className="w-full relative h-auto mt-0">
       <Carousel className="w-full" opts={{
       startIndex: currentIndex,
       loop: true,
@@ -58,4 +62,5 @@ const BannerCarousel: React.FC = () => {
       </Carousel>
     </section>;
 };
+
 export default BannerCarousel;
