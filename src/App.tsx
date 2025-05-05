@@ -28,6 +28,11 @@ import OurPartners from "./pages/OurPartners";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import Dashboard from "./pages/Dashboard";
+
+// Dashboard Pages
+import AdminDashboard from "./pages/admin/Dashboard";
+import AgentDashboard from "./pages/agent/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -63,15 +68,22 @@ const App = () => {
                 <Route path="/auth/login" element={<Login />} />
                 <Route path="/auth/register" element={<Register />} />
                 
+                {/* Dashboard redirect */}
+                <Route 
+                  path="/dashboard" 
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  } 
+                />
+                
                 {/* Admin routes */}
                 <Route 
                   path="/admin/dashboard" 
                   element={
                     <ProtectedRoute requiredRole="admin">
-                      <div className="p-8">
-                        <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-                        <p className="text-gray-500">Coming soon</p>
-                      </div>
+                      <AdminDashboard />
                     </ProtectedRoute>
                   } 
                 />
@@ -81,10 +93,7 @@ const App = () => {
                   path="/agent/dashboard" 
                   element={
                     <ProtectedRoute requiredRole="agent">
-                      <div className="p-8">
-                        <h1 className="text-2xl font-bold">Agent Dashboard</h1>
-                        <p className="text-gray-500">Coming soon</p>
-                      </div>
+                      <AgentDashboard />
                     </ProtectedRoute>
                   } 
                 />

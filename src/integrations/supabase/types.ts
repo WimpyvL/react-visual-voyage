@@ -151,26 +151,38 @@ export type Database = {
       }
       profiles: {
         Row: {
+          address: string | null
+          commission_rate: number | null
           created_at: string
+          email: string | null
           first_name: string | null
           id: string
           last_name: string | null
+          phone: string | null
           role: string
           updated_at: string
         }
         Insert: {
+          address?: string | null
+          commission_rate?: number | null
           created_at?: string
+          email?: string | null
           first_name?: string | null
           id: string
           last_name?: string | null
+          phone?: string | null
           role?: string
           updated_at?: string
         }
         Update: {
+          address?: string | null
+          commission_rate?: number | null
           created_at?: string
+          email?: string | null
           first_name?: string | null
           id?: string
           last_name?: string | null
+          phone?: string | null
           role?: string
           updated_at?: string
         }
