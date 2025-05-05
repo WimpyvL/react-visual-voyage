@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabase";
@@ -157,7 +156,6 @@ Message: ${formData.message}
       toast({
         title: "Error",
         description: "Failed to send your message. Please try again later.",
-        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
