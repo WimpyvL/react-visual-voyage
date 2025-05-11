@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ContactForm from './ContactForm';
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "sonner";
 
 const ContactFormSection: React.FC = () => {
   return (
